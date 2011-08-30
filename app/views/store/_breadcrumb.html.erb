@@ -1,0 +1,6 @@
+<div id='breadcrumb'>
+  Categories:
+  <%category.path.each {|c|%>
+    <%=content_tag :span, link_to(c.name, :action=>:category,:id=>c.id)%>
+  <%}%>
+<div>

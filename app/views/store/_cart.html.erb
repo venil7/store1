@@ -1,0 +1,15 @@
+<div style='background:lightgrey;'>
+<strong>cart: <%=cart.id%></strong>
+<ul>
+  <%cart.cartitems.each {|c| %>
+    <li>
+      <%=c.product.name %> (<%=c.amount%>)
+      <%=link_to "x", :action=>:delete, :id=>c.product_id%>
+    </li>
+  <%}%>
+</ul>
+<strong>subtotal: </strong><%= cart.sub_total %>
+<br />
+<%= link_to "checkout", :controller => :checkout %>
+<%= link_to "clear", :action => :clear %>
+</div>

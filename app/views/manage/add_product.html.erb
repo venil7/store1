@@ -1,0 +1,5 @@
+<%= render "shared/error_list", :item => @product %>
+<%= form_for @product, :as => :product, :url=>{:action => :add_product} do |form| %>
+    <%= render "product_form", :form => form %>
+    <%= form.submit "Submit" %>
+<% end %>

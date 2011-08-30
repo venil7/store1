@@ -1,0 +1,7 @@
+tmp/
+public/assets/*
+log/*.log
+db/*.sqlite3
+config/*.yml
+.redcar/
+.bundle

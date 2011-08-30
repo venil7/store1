@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  comments: MyString
+  total: 1.5
+  completed: false
+
+two:
+  comments: MyString
+  total: 1.5
+  completed: false

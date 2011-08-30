@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Store</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <%= stylesheet_link_tag :all %>
+    <link href='http://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js'></script>
+    <%= javascript_include_tag :all %>
+    <%= csrf_meta_tag %>
+  </head>
+
+<body>
+
+<div id="templatemo_header_wrapper">
+	<div id="templatemo_header">
+    <div id="site_title">
+            <h1><a href="/" title='SaSisCo'>
+                  <span style='color:yellow;'>Sa</span><span style='color:#70a7fa;'>Sis</span><span style='color:SpringGreen;'>Co</span>
+                </a>
+            </h1>
+            <span class='slogan'>stationary suppliers</span>
+        </div> <!-- end of site_title -->  
+    </div>
+</div>
+
+<div id="templatemo_menu">
+  <ul id='menu'>
+    <li><a href="index.html" class="selected">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="blog.html">Our Blog</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</div> <!-- end of templatemo_menu -->
+
+<%= yield %>
+
+<div id="templatemo_main_bottom"></div>
+
+<div id="templatemo_footer">
+
+    Copyright © 2012 <a href="#">SasisCo</a> | 
+    Web Development by 
+    <a href='http://www.darkruby.co.uk'>
+      <span class='darkruby' style='background:#111;color:grey;'><%<span style='color:#fff'>Dark</span><span style='color:red;'>Ruby</span>%></span>
+    </a>  
+
+</div> <!-- end of templatemo_footer -->
+
+<script>
+
+</script>
+
+</body>
+</html>

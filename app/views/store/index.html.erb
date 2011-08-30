@@ -1,0 +1,9 @@
+<%= render "cart", :cart=>@cart %>
+<br />
+<br />
+<strong>products:</strong>
+<br />
+<% @products.each { |p| %>
+   <%= link_to "add #{p.name} (#{p.price}/#{p.final_price}) to cart", :action => :add, :id=>p.id %>
+   <br />
+<% } %>

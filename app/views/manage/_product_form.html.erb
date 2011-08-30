@@ -1,0 +1,39 @@
+<li>
+  <%= form.label :name, "Name" %>
+  <%= form.text_field :name %>
+</li>
+
+<li>
+  <%= form.label :discount, "Discount" %>
+  <%= form.text_field :discount %> %
+</li>
+
+<li>
+  <%= form.label :price, "Price" %>
+  <%= form.text_field :price %>
+</li>
+
+<li>
+  <%= form.label :final_price, "Final Price" %>
+  <%= form.text_field :final_price, {:disabled=>true} %>
+</li>
+
+<li>
+  <%= form.label :category_id, "Category" %>
+  <%= form.select :category_id, @categories %>
+</li>
+
+<li>
+  <%= form.label :badge_id, "Badge" %>
+  <%= form.select :badge_id, @badges %>
+</li>
+
+<li>
+  <%= form.label :short_description, "Short" %>
+  <%= form.text_field :short_description %>
+</li>
+
+<li>
+  <%= form.label :long_description, "long" %>
+  <%= form.text_area :long_description %>
+</li>

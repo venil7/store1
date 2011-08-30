@@ -1,0 +1,13 @@
+<%=paginate @products%>
+
+<%=link_to "new*", :action=>:add_product%>
+
+<table id='products'>
+<% @products.each do |p| %>
+  <tr>
+    <td><%= link_to p.name, :action => :update_product, :id => p.id %></td>
+    <td><%= p.price %></td>
+    <td><%= link_to "delete", :action => :delete_product, :id => p.id %></td>
+  </tr>
+<% end %>
+</table>
