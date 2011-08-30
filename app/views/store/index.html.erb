@@ -1,9 +1,55 @@
-<%= render "cart", :cart=>@cart %>
-<br />
-<br />
-<strong>products:</strong>
-<br />
-<% @products.each { |p| %>
-   <%= link_to "add #{p.name} (#{p.price}/#{p.final_price}) to cart", :action => :add, :id=>p.id %>
-   <br />
-<% } %>
+<div id="templatemo_main">
+
+	<div id="templatemo_content">
+      <ul id='product_list'>     
+        <% @products.each { |p| %>
+          <li>
+            <div class='product'>
+              <%= link_to(image_tag(p.photo.url(:thumb)), :action => :add, :id=>p.id) %>
+            </div>
+          <li>
+        <% } %>
+      </ul>
+  	</div>
+    
+    <div id="templatemo_sidebar">
+      <div class="sidebar_title">
+        	Categories
+        </div>
+        <div class="sidebar_box">
+            <ul class="templatemo_list">
+                <li><a href="#">Aliquam pretium porta odio</a></li>
+                <li><a href="#">Praesent adipiscing</a></li>
+                <li><a href="#">Quisque dictum pharetra</a></li>
+                <li><a href="#">Fusce quis diam sit amet</a></li>
+            </ul>
+        </div>
+        
+        <div class="cleaner_h20"></div>
+        
+        <div class="sidebar_title">
+        	Cool Links
+        </div>
+        <div class="sidebar_box">
+            <ul class="templatemo_list">
+                <li><a href="http://www.templatemo.com" target="_parent">CSS Templates</a></li> 
+                <li><a href="http://www.flashmo.com/page/1" target="_parent">Flash XML Galleries</a></li>
+                <li><a href="http://www.templatemo.com/page/1" target="_parent">Website Templates</a></li>
+                <li><a href="http://www.webdesignmo.com/blog" target="_blank">Web Design Blog</a></li>
+            </ul>
+        </div>
+        
+        <div class="cleaner_h20"></div>
+        
+        <div class="sidebar_title">
+        	Quick Info.
+        </div>
+        <div class="sidebar_box">
+            <blockquote>
+                <p> In velit urna, convallis id, pharetra in, iaculis sit amet, mi.   Praesent consectetur imperdiet mauris.</p>
+                
+              <cite><a href="http://www.templatemo.com" target="_parent">templatemo</a> - <span>Web Designer</span></cite>            </blockquote>
+      </div>
+    </div>
+    <div class="cleaner"></div>
+</div>

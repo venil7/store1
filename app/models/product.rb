@@ -20,4 +20,8 @@ class Product < ActiveRecord::Base
   def final_price
     (discount ? price*(1-(discount*0.01)) : price).round(2)
   end
+
+  def photo
+    photos.any? ? photos.first.photo : nil
+  end
 end
