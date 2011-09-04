@@ -21,7 +21,21 @@ class Product < ActiveRecord::Base
     (discount ? price*(1-(discount*0.01)) : price).round(2)
   end
 
+  def photo?
+    if photos.any?
+       @photo = photos.first.photo
+       true
+    else
+       false
+    end
+  end
+  
   def photo
-    photos.any? ? photos.first.photo : nil
+    photo? ? @photo : nil
+  end
+  
+  #helper functions
+  def discount?
+    (discount != nil) && (discount > 0)
   end
 end

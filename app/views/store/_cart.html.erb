@@ -1,15 +1,22 @@
-<div style='background:lightgrey;'>
-<strong>cart: <%=cart.id%></strong>
-<ul>
-  <%cart.cartitems.each {|c| %>
-    <li>
-      <%=c.product.name %> (<%=c.amount%>)
-      <%=link_to "x", :action=>:delete, :id=>c.product_id%>
-    </li>
-  <%}%>
-</ul>
-<strong>subtotal: </strong><%= cart.sub_total %>
-<br />
-<%= link_to "checkout", :controller => :checkout %>
-<%= link_to "clear", :action => :clear %>
+<div class="sidebar_title cart">
+   	Your Cart
+</div>
+<div id="cart" class="sidebar_box">
+    <%if not cart.empty?%>
+      <ul class='templatemo_list'>
+        <%cart.cartitems.each {|c| %>
+          <li>
+            <%=c.product.name %> (<%=c.amount%>)
+            <%=link_to :x, :action=>:delete, :id=>c.product_id%>
+          </li>
+        <%}%>
+      </ul>
+      <%#= link_to "clear", :action => :clear %>
+      <strong>subtotal: </strong><%= "€#{cart.sub_total}" %>
+      <div>
+        <%= link_to "checkout", {:controller => :checkout}, {:class=>:checkout} %>
+      </div>
+    <%else%>
+      <span>Cart is empty</span>
+    <%end%>
 </div>

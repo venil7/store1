@@ -1,6 +1,12 @@
-<div id='breadcrumb'>
-  Categories:
-  <%category.path.each {|c|%>
-    <%=content_tag :span, link_to(c.name, :action=>:category,:id=>c.id)%>
-  <%}%>
-<div>
+<%if category  %>
+    <div id='breadcrumb'>
+      <% category.path.each {|c|%>
+        <% if c != category %>
+          <%=content_tag :span, link_to(c.name, :action=>:category,:id=>c.id)%>
+          <%=image_tag '/images/category_arrow.png' %>
+        <% else %>
+          <%=content_tag :span, c.name%>  
+        <% end %>
+      <%}%>
+    </div>
+<%end%>

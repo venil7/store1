@@ -1,7 +1,7 @@
 class StoreController < CartController
-#  before_filter :init_cart, :except => []
+  before_filter :set_reference_data
+  
   def index
-    @cart =  cart
     @products = Product.all
   end
 
@@ -26,7 +26,6 @@ class StoreController < CartController
     @category = Category.find(params[:id])
     @page = params[:page] || 0
     @products = @category.products.page(@page).per(page_size)
-    @cart = cart
   end
 
   def product
@@ -37,7 +36,9 @@ class StoreController < CartController
   def page_size
     12
   end
-  #  def init_cart
-  #  @cart = cart
-  #end
+  
+  def set_reference_data
+    @cart = cart
+    @categories = Category.limit(10)
+  end
 end

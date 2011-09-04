@@ -30,4 +30,8 @@ class Order < ActiveRecord::Base
   def total_cents
     sub_total * 100
   end
+  
+  def empty?
+    !cartitems.any?
+  end
 end

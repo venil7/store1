@@ -1,12 +1,16 @@
-<%= render "cart", :cart=>@cart %>
-
-<%= render 'breadcrumb', :category=>@category %>
-
-<br />
-<br />
-<strong>products:</strong>
-<br />
-<% @products.each { |p| %>
-   <%= link_to "add #{p.name} (#{p.price}/#{p.final_price}) to cart", :action => :add, :id=>p.id %>
-   <br />
-<% } %>
+<div id="templatemo_main">
+	<div id="templatemo_content">
+      <%= render 'breadcrumb', :category => @category %>
+      <%= render 'products', :products => @products %>
+  	</div>
+    
+    <div id="templatemo_sidebar">
+        <%= render 'cart', :cart => @cart %>
+        <div class="cleaner_h20"></div>
+        <%=render 'categories', :categories => @categories %>
+        <div class="cleaner_h20"></div>
+        <%=render 'popular', :popular => @popular %>
+        <div class="sidebar_box"></div>
+    </div>
+    <div class="cleaner"></div>
+</div>

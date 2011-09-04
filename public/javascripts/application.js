@@ -12,4 +12,14 @@ $(function() {
     generateNextPrev:true,
     generatePagination:false
   });
+  
+  //instant cart
+  $('.product').each(function(){
+   var cart = $(this).find('a.instant_cart');
+    $(this).hover(function(){
+      cart.show();
+    },function(){
+      cart.hide();
+    });
+  });
 });

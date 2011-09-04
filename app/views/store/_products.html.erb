@@ -1,0 +1,17 @@
+<ul id='product_list'>     
+<% products.each { |p| %>
+  <li>
+    <div class='product'>
+      <div class='product_image'>
+        <%= link_to(image_tag(p.photo.url(:small)), :action => :product, :id=>p.id) %>
+      </div>
+      <div><%= p.name%></div>
+      <div class='product_descr'>
+         <%= content_tag :span, "€#{p.price}", {:class=>:old_price} if p.discount?%>
+         <%= content_tag :span, "€#{p.final_price}", {:class=>:price}%>
+      </div>
+      <%= link_to (content_tag :div), {:action=>:add, :id=>p.id}, {:class=>'instant_cart', :title=>'Add to Cart'} %>
+    </div>
+  </li>
+<% } %>
+</ul>

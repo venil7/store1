@@ -1,0 +1,16 @@
+<div id="templatemo_main">
+	<div id="templatemo_content">
+      <%= render 'breadcrumb', :category => @product.category %>
+      <%#= render 'product_details', :product => @product %>
+  	</div>
+    
+    <div id="templatemo_sidebar">
+        <%= render 'cart', :cart => @cart %>
+        <div class="cleaner_h20"></div>
+        <%=render 'categories', :categories => @categories %>
+        <div class="cleaner_h20"></div>
+        <%=render 'popular', :popular => @popular %>
+        <div class="sidebar_box"></div>
+    </div>
+    <div class="cleaner"></div>
+</div>
