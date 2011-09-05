@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110825200559) do
+ActiveRecord::Schema.define(:version => 20110905191343) do
 
   create_table "badges", :force => true do |t|
     t.string   "name"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20110825200559) do
     t.integer  "discount",          :default => 0
     t.integer  "category_id"
     t.integer  "badge_id"
+    t.string   "sku"
   end
 
 end

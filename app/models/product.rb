@@ -12,6 +12,7 @@ class Product < ActiveRecord::Base
   validates_numericality_of :discount, :only_integer => true
 
   validates :name, :presence => true
+  validates :sku, :presence => true, :uniqueness => true
   validates :category_id, :presence => true, :numericality => true
   validates :long_description, :presence => true
   validates :short_description, :presence => true
