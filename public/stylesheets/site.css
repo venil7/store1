@@ -104,5 +104,16 @@ ul#product_list li div.product .price {font-weight:bold;}
 #breadcrumb {display:block;padding-left:40px;}
 #breadcrumb span {font-weight:bold;}
 
-#cart a.checkout {float: right;background: url(/images/paypal_small.png) no-repeat #CCC;padding: 2px 2px 2px 18px;border: 1px solid #AAA;color: #666;text-decoration: none;}
+#cart a.checkout {float: right;background: url(/images/paypal_small.png) no-repeat #CCC;padding: 2px 14px 2px 18px;border: 1px solid #AAA;color: #666;text-decoration: none;border-radius:4px;}
 #cart ul {padding-bottom:5px;}
+
+#templatemo_content .product_detail {margin:20px 0 0 40px;}
+#templatemo_content .product_detail .product_detail_images {float:left;width:300px;}
+#templatemo_content .product_detail .product_detail_images .thumbnails ul {padding:0;}
+#templatemo_content .product_detail .product_detail_images .thumbnails li {float:left;list-style:none outside none;margin:0pt;padding:4px;}
+
+#templatemo_content .product_detail .product_decsription {float:right;display:block;width:300px;}
+#templatemo_content .product_detail .product_decsription h1 {padding: 0 0 5px 0;color:#666;font-size:24px;margin:0;}
+#templatemo_content .product_detail .product_decsription h3 span.old_price {color:red;text-decoration: line-through;}
+#templatemo_content .product_detail .product_decsription h3 span.price {color:green;}
+#templatemo_content .product_detail .product_decsription .add_to_cart {background:url(/images/add_cart_small.png) 0 0 no-repeat;padding-left:34px;height:32px;padding-top:10px;}

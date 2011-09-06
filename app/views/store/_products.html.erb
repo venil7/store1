@@ -7,8 +7,8 @@
       </div>
       <div><%= p.name%></div>
       <div class='product_descr'>
-         <%= content_tag :span, "€#{p.price}", {:class=>:old_price} if p.discount?%>
-         <%= content_tag :span, "€#{p.final_price}", {:class=>:price}%>
+         <%= content_tag :span, number_to_currency(p.price, {:unit=>"€"}), {:class=>:old_price} if p.discount?%>
+         <%= content_tag :span, number_to_currency(p.final_price, {:unit=>"€"}), {:class=>:price}%>
       </div>
       <%= link_to (content_tag :div), {:action=>:add, :id=>p.id}, {:class=>'instant_cart', :title=>'Add to Cart'} %>
     </div>
