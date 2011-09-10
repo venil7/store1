@@ -111,6 +111,7 @@ ul#product_list li div.product .price {font-weight:bold;}
 #templatemo_content .product_detail .product_detail_images {float:left;width:300px;}
 #templatemo_content .product_detail .product_detail_images .thumbnails ul {padding:0;}
 #templatemo_content .product_detail .product_detail_images .thumbnails li {float:left;list-style:none outside none;margin:0pt;padding:4px;}
+#templatemo_content .product_detail .product_detail_images .social {display:block;clear:both;}
 
 #templatemo_content .product_detail .product_decsription {float:right;display:block;width:300px;}
 #templatemo_content .product_detail .product_decsription h1 {padding: 0 0 5px 0;color:#666;font-size:24px;margin:0;}
