@@ -1,6 +1,13 @@
-::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(:login => "seller_1310850880_biz_api1.gmail.com", :password => "1310850927", :signature => "AVO-1SY.tDOG.SuUpoUPxZE8c.t0AzCEH.Plq76OW6er9K5jmNRVCCqk")
+ACTIVE_MERCHANT_OPTIONS = YAML.load_file("#{::Rails.root.to_s}/config/activemerchant.yml")[Rails.env].to_options
+
+::EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(ACTIVE_MERCHANT_OPTIONS)
 
 #talk to test server if not in production
-ActiveMerchant::Billing::Base.mode = :test unless Rails.env.to_sym == :production
-#we only sell in pounds £
-ActiveMerchant::Billing::PaypalExpressGateway.default_currency = 'GBP'
+if Rails.env.to_sym == :production
+  ActiveMerchant::Billing::Base.mode = :production
+else
+  ActiveMerchant::Billing::Base.mode = :test
+end
+
+#we only sell in euros €
+ActiveMerchant::Billing::PaypalExpressGateway.default_currency = 'EUR'

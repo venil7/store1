@@ -62,6 +62,10 @@ class ManageController < ApplicationController
     @order = Order.find(params[:id])
   end
 
+  def merch
+    render :text => ACTIVE_MERCHANT_OPTIONS
+  end
+  
   protected
   def authenticate
     authenticate_or_request_with_http_basic do |username, password|
@@ -77,4 +81,5 @@ class ManageController < ApplicationController
   def page_size
     5
   end
+  
 end
