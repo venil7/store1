@@ -17,6 +17,8 @@ class Product < ActiveRecord::Base
   validates :long_description, :presence => true
   validates :short_description, :presence => true
 
+  scope :popular, order("updated_at")
+
   #virtual fields
   def final_price
     (discount ? price*(1-(discount*0.01)) : price).round(2)
@@ -30,13 +32,14 @@ class Product < ActiveRecord::Base
        false
     end
   end
-  
+
   def photo
     photo? ? @photo : nil
   end
-  
+
   #helper functions
   def discount?
     (discount != nil) && (discount > 0)
   end
 end
+

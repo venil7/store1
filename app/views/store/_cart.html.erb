@@ -6,18 +6,20 @@
       <ul class='templatemo_list'>
         <%cart.cartitems.each {|c| %>
           <li>
-            <%=c.product.name %> 
-            <%="#{c.amount}x" + number_to_currency(c.product.final_price, {:unit=>"€"})%>
-            <%=link_to :remove, :action=>:delete, :id=>c.product_id%>
+            <%=c.product.name %>
+            <%="#{c.amount}x#{currency(c.product.final_price)}"%>
+            <%# =link_to :remove, :action=>:delete, :id=>c.product_id%>
           </li>
         <%}%>
       </ul>
       <%#= link_to "clear", :action => :clear %>
-      <strong>subtotal: </strong><%= number_to_currency(cart.sub_total, {:unit=>"€"}) %>
+      <strong>subtotal: </strong><%= currency(cart.sub_total) %>
       <div>
+        <%= link_to "edit cart", {:action => :edit} %>
         <%= link_to "checkout", {:controller => :checkout}, {:class=>:checkout} %>
       </div>
     <%else%>
-      <span>Cart is empty</span>
+      <div class='empty'>Cart is empty</div>
     <%end%>
 </div>
+

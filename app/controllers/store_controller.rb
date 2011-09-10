@@ -1,6 +1,6 @@
 class StoreController < CartController
   before_filter :set_reference_data
-  
+
   def index
     @products = Product.all
   end
@@ -9,6 +9,13 @@ class StoreController < CartController
   def clear
     clear_cart
     redirect_to request.referrer#:action => :index
+  end
+
+  def edit
+    if request.post?
+      @cart.update_amounts(request[:amounts])
+      redirect_to :action => :edit
+    end
   end
 
   def add
@@ -36,9 +43,11 @@ class StoreController < CartController
   def page_size
     12
   end
-  
+
   def set_reference_data
     @cart = cart
     @categories = Category.limit(10)
+    @popular = Product.popular.limit(10)
   end
 end
+

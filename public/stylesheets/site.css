@@ -87,7 +87,7 @@ em{color:#5d6d1e;}
 img,#gallery a{border:none;}
 
 ul#product_list {}
-ul#product_list li {float:left;display-inline;list-style:none;padding:0 20px 5px 0;}
+ul#product_list li {float:left;display:inline;list-style:none;padding:0 20px 5px 0;}
 ul#product_list li div.product {width:120px;position:relative;}
 ul#product_list li div.product_image {width:120px;height:120px;background-color: #DDD;}
 ul#product_list li div.product_image img {padding:4px; width:112px;height:112px;}
@@ -106,6 +106,7 @@ ul#product_list li div.product .price {font-weight:bold;}
 
 #cart a.checkout {float: right;background: url(/images/paypal_small.png) no-repeat #CCC;padding: 2px 14px 2px 18px;border: 1px solid #AAA;color: #666;text-decoration: none;border-radius:4px;}
 #cart ul {padding-bottom:5px;}
+#cart div.empty {padding-top:15px;}
 
 #templatemo_content .product_detail {margin:20px 0 0 40px;}
 #templatemo_content .product_detail .product_detail_images {float:left;width:300px;}
@@ -113,8 +114,21 @@ ul#product_list li div.product .price {font-weight:bold;}
 #templatemo_content .product_detail .product_detail_images .thumbnails li {float:left;list-style:none outside none;margin:0pt;padding:4px;}
 #templatemo_content .product_detail .product_detail_images .social {display:block;clear:both;}
 
+
 #templatemo_content .product_detail .product_decsription {float:right;display:block;width:300px;}
 #templatemo_content .product_detail .product_decsription h1 {padding: 0 0 5px 0;color:#666;font-size:24px;margin:0;}
 #templatemo_content .product_detail .product_decsription h3 span.old_price {color:red;text-decoration: line-through;}
 #templatemo_content .product_detail .product_decsription h3 span.price {color:green;}
 #templatemo_content .product_detail .product_decsription .add_to_cart {background:url(/images/add_cart_small.png) 0 0 no-repeat;padding-left:34px;height:32px;padding-top:10px;}
+
+#cart_editor {padding-left:40px;}
+#cart_editor h1 {color: #666;font-size: 18px;padding-top: 20px;}
+#cart_editor ul li {list-style:none;font-size: 14px;position:relative;padding:4px 0 4px 4px}
+#cart_editor ul li.odd {background:#efffef;}
+#cart_editor ul li.even {background:#ddd;}
+#cart_editor ul li img {vertical-align:middle;background:#eee;padding: 4px}
+#cart_editor ul li select {position:absolute;left:200px;top:15px;}
+#cart_editor ul li a.delete {display:inline;background:url(/images/cart_delete.png) no-repeat;height:16px;right:30px;position: absolute;top:15px;width: 16px;}
+#cart_editor div.submit {padding-top:40px;}
+#cart_editor div.submit input[type=submit]{float:right; border:1px solid red;}
+

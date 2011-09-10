@@ -3,8 +3,9 @@
 </div>
 <div class="sidebar_box">
     <ul class="templatemo_list">
-        <%# categories.each { |c| %>
-            <li><%#=link_to c.name, :action => :category, :id => c.id %></li>
-        <%#}%>
+        <% popular.each { |p| %>
+            <li><%=link_to p.name, :action => :product, :id => p.id %></li>
+        <%}%>
     </ul>
 </div>
+
