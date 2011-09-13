@@ -8,7 +8,8 @@
           <% @cart.cartitems.each { |c| %>
             <li>
               <%=image_tag c.product.photo.url(:thumb) %>
-              <%=c.product.name %>
+              <%= c.product.name %>
+              <%= currency c.product.final_price %>
               <%= select_tag "amounts[#{c.product_id}]", options_for_select((1..50).to_a, c.amount) %>
               <%= link_to  "", {:action=>:delete, :id=>c.product_id}, {:class=>:delete, :title=>"Delete from cart"} %>
              </li>
@@ -16,6 +17,8 @@
         </ul>
         <div class='submit'>
           <%= submit_tag "Save and Checkout"%>
+          <span><span style="font-weight:bold">Subtotal: </span><%= currency @cart.sub_total %></span>
+          <%= link_to "Back to shopping", {:action => :index}, {:style=>'display:block;'} %>
         </div>
       <% end %>
     </div>

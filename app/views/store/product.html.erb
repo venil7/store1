@@ -2,7 +2,7 @@
 	<div id="templatemo_content">
       <%= render 'breadcrumb', :category => @product.category %>
       <%#= render 'product_details', :product => @product %>
-      
+
       <div class='product_detail'>
 	      <div class='product_detail_images'>
 		      <%=image_tag @product.photo.url(:big) %>
@@ -25,14 +25,18 @@
 		        <%= content_tag :span, number_to_currency(@product.price, {:unit=>"€"}), {:class=>:old_price} if @product.discount?%>
             <%= content_tag :span, number_to_currency(@product.final_price, {:unit=>"€"}), {:class=>:price}%>
 		      </h3>
-		      <%=link_to (content_tag :div, "Add To Cart", {:class=>:add_to_cart}), {:action => :add, :id => @product.id} %>
+		      <%= form_tag :action=>:add,:id=>@product.id do %>
+             <%= select_tag :amount, options_for_select((1..50).to_a) %>
+             <%= submit_tag %>
+          <% end %>
+		      <%#=link_to (content_tag :div, "Add To Cart", {:class=>:add_to_cart}), {:action => :add, :id => @product.id} %>
 		      <p><%=@product.short_description%></p>
 		      <p><%=@product.long_description%></p>
 	      </div>
       </div>
-  	
+
   </div>
-    
+
   <div id="templatemo_sidebar">
         <%= render 'cart', :cart => @cart %>
         <div class="cleaner_h20"></div>
@@ -43,3 +47,4 @@
     </div>
     <div class="cleaner"></div>
 </div>
+

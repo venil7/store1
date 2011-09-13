@@ -12,8 +12,8 @@ class CartController < ActionController::Base
     @order ||= Order.new
   end
 
-  def add_to_cart(id)
-    @order.add_product(id.to_i)
+  def add_to_cart(id, amount)
+    @order.add_product(id.to_i, amount.to_i)
     session[:order_id] = @order.id
   end
 
@@ -35,3 +35,4 @@ class CartController < ActionController::Base
     session[:order_id] = nil
   end
 end
+

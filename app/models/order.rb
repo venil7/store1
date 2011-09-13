@@ -4,12 +4,12 @@ class Order < ActiveRecord::Base
 
   scope :completed, order("updated_at").where(:completed => true)
 
-  def add_product(product_id)
+  def add_product(product_id, amount=1)
     save if !persisted?
     @cartitem = product_ids.include?(product_id) ?
       cartitems.select{|c| c.product_id == product_id}.first :
-      Cartitem.new(:order_id => id,:product_id => product_id)
-    @cartitem.amount += 1
+      Cartitem.new(:order_id => id,:product_id => product_id,:amount => 0)
+    @cartitem.amount += amount
     @cartitem.save
     #reload
   end

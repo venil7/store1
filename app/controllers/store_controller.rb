@@ -19,7 +19,7 @@ class StoreController < CartController
   end
 
   def add
-    add_to_cart(params[:id])
+    add_to_cart(params[:id], params[:amount] || 1)
     redirect_to request.referrer#:action => :index
   end
 
