@@ -1,0 +1,13 @@
+<%selected = {:class => :selected}%>
+<div id="templatemo_menu">
+  <ul id='menu'>
+    <li><%= link_to "Home",          {:action=>:index, :controller=>:store},  menu_item == :home    ? selected : {} %></li>
+    <li><%= link_to "Your Cart",     {:action=>:edit,  :controller=>:store},  menu_item == :cart    ? selected : {} %></li>
+    <li><%= link_to "New Arrivals",  {:action=>:recent,:controller=>:store},  menu_item == :recent  ? selected : {} %></li>
+    <li><%= link_to "Sale", {:action=>:sale,  :controller=>:store},  menu_item == :sale    ? selected : {} %></li>
+    <li><%= link_to "Blog",          {:action=>:index, :controller=>:blog},   menu_item == :blog    ? selected : {} %></li>
+    <li><%= link_to "Contact",       {:action=>:index, :controller=>:contact},menu_item == :contact ? selected : {} %></li>
+  </ul>
+</div>
+<%#= "menu item --> #{menu_item.class} <--" %>
+

@@ -2,7 +2,19 @@ class StoreController < CartController
   before_filter :set_reference_data
 
   def index
-    @products = Product.all
+    @products = Product.page(@page).per(page_size)
+  end
+
+  def recent
+    @menu_item = :recent
+    @products = Product.recently_added.page(@page).per(page_size)
+    render :action => :index
+  end
+
+  def sale
+    @menu_item = :sale
+    @products = Product.discounted.page(@page).per(page_size)
+    render :action => :index
   end
 
   #cart
@@ -15,6 +27,8 @@ class StoreController < CartController
     if request.post?
       @cart.update_amounts(request[:amounts])
       redirect_to :action => :edit
+    else
+     @menu_item = :cart
     end
   end
 
@@ -31,7 +45,6 @@ class StoreController < CartController
   #navigation
   def category
     @category = Category.find(params[:id])
-    @page = params[:page] || 0
     @products = @category.products.page(@page).per(page_size)
   end
 
@@ -42,10 +55,9 @@ class StoreController < CartController
   #search
   def search
     if request.post?
-      redirect_to :action => :search, :id => params[:search]
+      redirect_to :action => :search, :id => params[:search].strip
     else
-      @page = params[:page] || 0
-      @products = Product.search(params[:id])
+      @products = Product.search(params[:id]).page(@page).per(page_size)
       render :action => :index
     end
   end
@@ -56,9 +68,11 @@ class StoreController < CartController
   end
 
   def set_reference_data
+    @page = params[:page] || 0
     @cart = cart
     @categories = Category.limit(10)
     @popular = Product.popular.limit(10)
+    @menu_item = :home
   end
 end
 

@@ -1,4 +1,5 @@
-<ul id='product_list'>     
+<ul id='product_list'>
+<%if products.any? %>
 <% products.each { |p| %>
   <li>
     <div class='product'>
@@ -14,4 +15,8 @@
     </div>
   </li>
 <% } %>
+<% else %>
+  <span>No Products found.</span>
+<% end %>
 </ul>
+

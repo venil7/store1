@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Store</title>
+    <title>Sasisco Store</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <%= stylesheet_link_tag :all %>
@@ -23,19 +23,11 @@
                 </a>
             </h1>
             <span class='slogan'>stationary suppliers</span>
-        </div> <!-- end of site_title -->  
+        </div> <!-- end of site_title -->
     </div>
 </div>
 
-<div id="templatemo_menu">
-  <ul id='menu'>
-    <li><a href="index.html" class="selected">Home</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="blog.html">Our Blog</a></li>
-    <li><a href="portfolio.html">Portfolio</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-</div> <!-- end of templatemo_menu -->
+<%= render "shared/menu", :menu_item => @menu_item %>
 
 <%= yield %>
 
@@ -43,11 +35,11 @@
 
 <div id="templatemo_footer">
 
-    Copyright © 2012 <a href="#">SasisCo</a> | 
-    Web Development by 
+    Copyright © 2012 <a href="#">SasisCo</a> |
+    Web Development by
     <a href='http://www.darkruby.co.uk'>
       <span class='darkruby' style='background:#111;color:grey;text-decoration:none;'>&lt;%<span style='color:#fff'>Dark</span><span style='color:red;'>Ruby</span>%&gt;</span>
-    </a>  
+    </a>
 
 </div> <!-- end of templatemo_footer -->
 
@@ -57,3 +49,4 @@
 
 </body>
 </html>
+

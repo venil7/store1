@@ -8,6 +8,7 @@ h3{font-size:21px;color:#e2d8bd;margin:0 0 20px;padding:0;}
 h4{font-size:18px;margin:0 0 20px;padding:0;}
 h5{font-size:16px;margin:0 0 10px;padding:0;}
 h6{font-size:14px;margin:0 0 5px;padding:0;}
+input {border:1px solid #aaa;color:#aaa;background:#eee}
 .cleaner{clear:both;width:100%;height:0;font-size:0;}
 .cleaner_h10{clear:both;width:100%;height:10px;}
 .cleaner_h20{clear:both;width:100%;height:20px;}
@@ -58,6 +59,9 @@ em{color:#5d6d1e;}
 #templatemo_sidebar .cart{background:url(/images/cart.png) no-repeat salmon;}
 #templatemo_sidebar .categories{background:url(/images/package.png) no-repeat salmon;}
 #templatemo_sidebar .popular{background:url(/images/popular.png) no-repeat salmon;}
+#templatemo_sidebar .search{background:url(/images/search_plus.png) no-repeat salmon;}
+#templatemo_sidebar form.product_search{padding-top:10px;}
+
 
 .two_column{width:260px;}
 .three_column{float:left;width:250px;padding-right:30px;}

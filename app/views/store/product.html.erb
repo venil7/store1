@@ -27,7 +27,7 @@
 		      </h3>
 		      <%= form_tag :action=>:add,:id=>@product.id do %>
              <%= select_tag :amount, options_for_select((1..50).to_a) %>
-             <%= submit_tag %>
+             <%= submit_tag("add to cart") %>
           <% end %>
 		      <%#=link_to (content_tag :div, "Add To Cart", {:class=>:add_to_cart}), {:action => :add, :id => @product.id} %>
 		      <p><%=@product.short_description%></p>
@@ -40,11 +40,13 @@
   <div id="templatemo_sidebar">
         <%= render 'cart', :cart => @cart %>
         <div class="cleaner_h20"></div>
+        <%= render 'search', :search => @search %>
+        <div class="cleaner_h20"></div>
         <%=render 'categories', :categories => @categories %>
         <div class="cleaner_h20"></div>
         <%=render 'popular', :popular => @popular %>
         <div class="sidebar_box"></div>
-    </div>
-    <div class="cleaner"></div>
+  </div>
+  <div class="cleaner"></div>
 </div>
 
