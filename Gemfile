@@ -7,6 +7,9 @@ gem 'rails', '3.0.9'
 
 gem 'sqlite3'
 
+gem 'meta_where' #for advanced searching
+#gem 'meta_search' #for advanced searching
+
 gem 'paperclip' #handle attach
 gem 'kaminari' #pagination
 gem 'activemerchant' #payment processing
@@ -34,3 +37,4 @@ gem 'activemerchant' #payment processing
 # group :development, :test do
 #   gem 'webrat'
 # end
+

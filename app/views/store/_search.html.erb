@@ -1,0 +1,12 @@
+<div class="sidebar_title search">
+	Product Search
+</div>
+<div class="sidebar_box">
+  <div class="search">
+    <% form_tag(:action => :search) do %>
+       <%= text_field :search, search %>
+       <%= submit_tag("search")%>
+    <% end %>
+  </div>
+</div>
+

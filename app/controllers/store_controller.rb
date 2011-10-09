@@ -39,6 +39,17 @@ class StoreController < CartController
     @product = Product.find(params[:id])
   end
 
+  #search
+  def search
+    if request.post?
+      redirect_to :action => :search, :id => params[:search]
+    else
+      @page = params[:page] || 0
+      @products = Product.search(params[:id])
+      render :action => :index
+    end
+  end
+
   private
   def page_size
     12

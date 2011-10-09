@@ -41,5 +41,18 @@ class Product < ActiveRecord::Base
   def discount?
     (discount != nil) && (discount > 0)
   end
+
+  def self.search(query)
+    if !query.to_s.strip.empty?
+       tokens = query.split.collect {|c| "%#{c.downcase}%"}
+       #fields = [:name, :short_description, :long_description]
+       meta = {:name.matches_any => tokens} |
+              {:short_description.matches_any => tokens} |
+              {:long_description.matches_any => tokens}
+       where(meta)
+    else
+      where(0)
+    end
+  end
 end
 
