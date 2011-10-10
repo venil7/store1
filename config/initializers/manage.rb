@@ -1,1 +1,0 @@
-MANAGE_CREDENTIALS = YAML.load_file("#{::Rails.root.to_s}/config/manage.yml")[Rails.env]

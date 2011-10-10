@@ -7,9 +7,12 @@ class CreateCategories < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    Category.create :name => "General", :description => "Genereal"
   end
 
   def self.down
     drop_table :categories
   end
 end
+

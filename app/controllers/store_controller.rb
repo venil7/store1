@@ -3,6 +3,7 @@ class StoreController < CartController
 
   def index
     @products = Product.page(@page).per(page_size)
+    @slider_products = Product.with_badge :slider
   end
 
   def recent

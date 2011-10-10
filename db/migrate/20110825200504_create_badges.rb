@@ -6,9 +6,12 @@ class CreateBadges < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    Badge.create :name=>"slider", :description=>"slider"
   end
 
   def self.down
     drop_table :badges
   end
 end
+

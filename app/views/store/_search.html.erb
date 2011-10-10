@@ -4,8 +4,8 @@
 <div class="sidebar_box">
   <div>
     <% form_tag({:action => :search}, :class=>"product_search") do %>
-       <%= text_field_tag :search, search%>
-       <%= submit_tag("search")%>
+       <%= text_field_tag :search, search, {:class=>:input_field}%>
+       <%= submit_tag("search", {:class=>:submit_btn})%>
     <% end %>
   </div>
 </div>

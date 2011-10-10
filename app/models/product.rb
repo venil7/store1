@@ -20,10 +20,7 @@ class Product < ActiveRecord::Base
   scope :popular, order("updated_at") #requires review!!
   scope :discounted, where(:discount.gt => 0)
   scope :non_discounted, where({:discount => 0}|{:discount => nil})
-  #scope :with_badge, lambda {  |badge|
-  #      badge_id = Badge.find_by_name(badge).id
-  #      joins(:badges).where(:badge_id => badge_id)
-  #}
+  scope :with_badge, lambda {|badge| Product.joins(:badge).where('badges.name'=>badge)}
   scope :recently_added, where(:created_at.gte => 30.days.ago)
 
 

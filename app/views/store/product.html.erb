@@ -1,7 +1,6 @@
 <div id="templatemo_main">
 	<div id="templatemo_content">
       <%= render 'breadcrumb', :category => @product.category %>
-      <%#= render 'product_details', :product => @product %>
 
       <div class='product_detail'>
 	      <div class='product_detail_images'>
@@ -13,28 +12,23 @@
 				      <% } %>
 			      </ul>
 		      </div>
-		      <div class='social'>
-  		      <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-            <g:plusone size="medium"></g:plusone>
-            <div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="" send="false" layout="button_count" width="50" show_faces="false" font=""></fb:like>
-		      </div>
+		      <%= render 'social'%>
 	      </div>
 	      <div class='product_decsription'>
 		      <h1><%=@product.name%></h1>
 		      <h3>
-		        <%= content_tag :span, number_to_currency(@product.price, {:unit=>"€"}), {:class=>:old_price} if @product.discount?%>
-            <%= content_tag :span, number_to_currency(@product.final_price, {:unit=>"€"}), {:class=>:price}%>
+		        <%= content_tag :span, currency(@product.price), {:class=>:old_price} if @product.discount?%>
+            <%= content_tag :span, currency(@product.final_price), {:class=>:price}%>
 		      </h3>
 		      <%= form_tag :action=>:add,:id=>@product.id do %>
              <%= select_tag :amount, options_for_select((1..50).to_a) %>
              <%= submit_tag("add to cart") %>
           <% end %>
-		      <%#=link_to (content_tag :div, "Add To Cart", {:class=>:add_to_cart}), {:action => :add, :id => @product.id} %>
 		      <p><%=@product.short_description%></p>
 		      <p><%=@product.long_description%></p>
 	      </div>
       </div>
-
+      <%#= render 'shared/disqus' %>
   </div>
 
   <div id="templatemo_sidebar">

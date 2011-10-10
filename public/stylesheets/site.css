@@ -28,6 +28,10 @@ blockquote{font-style:italic;margin-left:10px;}
 cite{font-weight:700;}
 cite span{color:#8da332;}
 em{color:#5d6d1e;}
+
+span.old_price {color:salmon;text-decoration: line-through;}
+span.price {color:green;}
+
 .templatemo_list{list-style:none;margin:0;padding:20px 0;}
 .templatemo_list li{background:transparent url(/images/bullet.png) no-repeat scroll 0 0;line-height:1em;padding: 0 0 5px 25px}
 .templatemo_list li a{color:#666;text-decoration:none;}
@@ -41,7 +45,7 @@ em{color:#5d6d1e;}
 #templatemo_header #site_title h1 a{color:#fff;font-weight:400;text-decoration:none;}
 #templatemo_header #site_title span.slogan {color:salmon;padding-left:90px;font-family:'Architects Daughter',cursive;}
 #templatemo_banner_wrapper{width:100%;/*height:270px;*/padding-top:5px;}
-#templatemo_banner{width:950px;height:250px;margin:auto;border:1px solid #ccc;background:#fff;position:relative;}
+#templatemo_banner{width:950px;height:250px;margin:auto;position:relative;}
 #templatemo_banner a.prev {position:absolute;top:100px;left:-24px; z-index:7;color:transparent;background:url(/images/arrow_prev.png);width:24px;height:43px;}
 #templatemo_banner a.next {position:absolute;top:100px;right:-24px;z-index:7;color:transparent;background:url(/images/arrow_next.png);width:24px;height:43px;}
 #templatemo_menu{clear:both;width:900px;height:28px;background:url(/images/templatemo_menu.png) no-repeat;margin:0 auto;padding:13px 35px;}
@@ -95,8 +99,8 @@ ul#product_list li {float:left;display:inline;list-style:none;padding:0 20px 5px
 ul#product_list li div.product {width:120px;position:relative;}
 ul#product_list li div.product_image {width:120px;height:120px;background-color: #DDD;}
 ul#product_list li div.product_image img {padding:4px; width:112px;height:112px;}
-ul#product_list li div.product .old_price {text-decoration: line-through;color:salmon;}
-ul#product_list li div.product .price {font-weight:bold;}
+/*ul#product_list li div.product .old_price {text-decoration: line-through;color:salmon;}
+ul#product_list li div.product .price {font-weight:bold;}*/
 
 .instant_cart {display:none;}
 .instant_cart div {position:absolute;background:url(/images/add_cart.png) no-repeat;width:32px;height:32px;right:0px;top:85px;}
@@ -122,8 +126,8 @@ ul#product_list li div.product .price {font-weight:bold;}
 
 #templatemo_content .product_detail .product_decsription {float:right;display:block;width:300px;}
 #templatemo_content .product_detail .product_decsription h1 {padding: 0 0 5px 0;color:#666;font-size:24px;margin:0;}
-#templatemo_content .product_detail .product_decsription h3 span.old_price {color:red;text-decoration: line-through;}
-#templatemo_content .product_detail .product_decsription h3 span.price {color:green;}
+/*#templatemo_content .product_detail .product_decsription h3 span.old_price {color:red;text-decoration: line-through;}
+#templatemo_content .product_detail .product_decsription h3 span.price {color:green;}*/
 /*#templatemo_content .product_detail .product_decsription .add_to_cart {background:url(/images/add_cart_small.png) 0 0 no-repeat;padding-left:34px;height:32px;padding-top:10px;}*/
 
 #templatemo_content .product_detail .product_decsription input[type=submit] {background: url("/images/add_cart_small.png") no-repeat scroll 0 0 #CCCCCC;border: 1px solid #AAAAAA;border-radius: 4px 4px 4px 4px;color: #666666;padding: 2px 14px 2px 18px;text-decoration: none;}
@@ -139,4 +143,12 @@ ul#product_list li div.product .price {font-weight:bold;}
 #cart_editor div.submit {padding:20px 0 0 40px;}
 #cart_editor div.submit span {font-size:16px;}
 #cart_editor div.submit input[type=submit]{float:right;background:url(/images/paypal_small.png) no-repeat #CCC;border:1px solid #AAA;border-radius:4px 4px 4px 4px;color:#666666;float:right;padding:2px 14px 2px 18px;}
+
+div.slides_container div.slider_left {float:left;width:250px;}
+div.slides_container div.slider_left img {padding:10px;}
+div.slides_container div.slider_right {float:left;width:650px;}
+div.slides_container div.slider_right h1 {font-size: 24px; margin: 0pt; padding: 10px 0pt 10px 0pt;}
+div.slides_container div.slider_right h1 a {color: #555; text-decoration:none;}
+
+#contact_form {padding: 0 0 0 40px;}
 

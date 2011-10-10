@@ -1,0 +1,26 @@
+<%if slider_products.any? %>
+<div id="templatemo_banner">
+	<div class="slides_container">
+  <%slider_products.each do |p| %>
+		<div>
+			<div class='slider_left'>
+		    <%=image_tag p.photo.url(:big) %>
+			</div>
+			<div class='slider_right'>
+				<h1><%=link_to p.name, :action=>:product, :id=>p.id%></h1>
+				<h3>
+		        <%= content_tag :span, currency(p.price), {:class=>:old_price} if p.discount?%>
+            <%= content_tag :span, currency(p.final_price), {:class=>:price}%>
+				</h3>
+				<p>
+					<%=p.long_description || p.short_description%>
+				</p>
+				<%= render 'social'%>
+			</div>
+		</div>
+	<%end%>
+	</div>
+</div>
+</div>
+<%end%>
+

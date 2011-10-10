@@ -65,13 +65,14 @@ class ManageController < ApplicationController
   protected
   def authenticate
     authenticate_or_request_with_http_basic do |username, password|
-      username == MANAGE_CREDENTIALS["username"] && password == MANAGE_CREDENTIALS["password"]
+      username == APP_CONFIG["admin_login"] && password == APP_CONFIG["admin_pass"]
     end
   end
 
   def product_reference_data
-    @categories = Category.all.map {|c| [c.name, c.id]}
-    @badges = Badge.all.map {|b| [b.name, b.id]}
+    default_dropdown_items = [['None','']]
+    @categories = default_dropdown_items + Category.all.map {|c| [c.name, c.id]}
+    @badges = default_dropdown_items + Badge.all.map {|b| [b.name, b.id]}
   end
 
   def page_size
