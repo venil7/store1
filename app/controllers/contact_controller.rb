@@ -5,6 +5,7 @@ class ContactController < ApplicationController
      @message = Message.new params[:message]
      if @message.valid?
       UserMailer.send_enquiry(@message).deliver
+      flash[:notice] = "Message sent."
       redirect_to :action => :index
      else
       render :action => :index
@@ -13,5 +14,6 @@ class ContactController < ApplicationController
      @message = Message.new
     end
   end
+
 end
 

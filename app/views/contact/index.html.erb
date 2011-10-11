@@ -4,7 +4,7 @@
       <div id="contact_form">
 
                     <h4>Quick Contact</h4>
-
+                    <p><%=flash[:notice]%></p>
                     <%= form_for @message, :as => :message, :url => {:action=>:index} do |form| %>
                       <div class="cleaner_h10"></div>
                         <%= form.label :name, "Name" %>
