@@ -16,7 +16,8 @@
       <strong>subtotal: </strong><%= currency(cart.sub_total) %>
       <div>
         <%= link_to "edit cart", {:action => :edit} %>
-        <%= link_to "checkout", {:controller => :checkout}, {:class=>:checkout} %>
+        <%#= link_to "checkout", {:controller => :checkout}, {:class=>:checkout} %>
+        <%= link_to image_tag('https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif'),{:controller => :checkout},{:style=>'float:right;'} %>
       </div>
     <%else%>
       <div class='empty'>Cart is empty</div>

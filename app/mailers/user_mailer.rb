@@ -1,15 +1,15 @@
 class UserMailer < ActionMailer::Base
   default APP_CONFIG["mailer_default"].to_options
+  helper :application
 
-  def email(data)
-   @data = data
-   mail(:subject => "just a test really")
+  def new_order_admin(order)
+    @order = order
+    mail(:subject => "Order #{@order.id}")
   end
 
-
-  def notify_of_new_order(order)
+  def new_order_customer(order, email)
     @order = order
-    mail(:subject => "New Order")
+    mail(:subject => "Your order #{@order.id}", :to => email)
   end
 
   def send_enquiry(message)

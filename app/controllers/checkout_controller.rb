@@ -1,39 +1,70 @@
 class CheckoutController < CartController
+  before_filter :set_reference_data
   def index
-    #save cart to db
     #redirect to paypal express
     response = EXPRESS_GATEWAY.setup_purchase(cart.total_cents,
       :ip                => request.remote_ip,
-      :return_url        => url_for(:controller => :checkout, :action => :success, :only_path => false),
-      :cancel_return_url => url_for(:controller => :checkout, :action => :cancel, :only_path => false))
+      :return_url        => url_for(:controller => :checkout, :action => :confirm, :only_path => false),
+      :cancel_return_url => url_for(:controller => :checkout, :action => :cancel, :only_path => false),
+      :order_id          => cart.id)
     redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
   end
 
+  #this action is run straight after paypal authorisation
+  def confirm
+    @token, @payer_id = params[:token], params[:PayerID]
+    if @token and @payer_id
+      @details = EXPRESS_GATEWAY.details_for(@token)
+
+      if @details.success?
+        @address = "#{@details.address['company']} #{@details.address['address1']} #{@details.address['address2']} #{@details.address['city']} #{@details.address['state']} #{@details.address['zip']} #{@details.address['country']}"
+        @cart.update_attributes! :name=>@details.name,
+                                 :address=>@address,
+                                 :email=>@details.email,
+                                 :phone=>@details.contact_phone,
+                                 :instructions=>@details.message
+      else
+        flash[:error] = "could not perform EXPRESS_GATEWAY.details"
+        redirect_to :controller=>:store, :action=>:error
+      end
+    else
+      flash[:error] = "could not find token or payer id"
+      redirect_to :controller=>:store, :action=>:error
+    end
+  end
+
+  #perform purchase after confirmation
   def success
-    @cents = cart.total_cents
-    @token = params[:token]
-    @payer_id = params[:PayerID]
-    @result =  EXPRESS_GATEWAY.purchase(@cents, {:ip => request.remote_ip, :token => @token, :payer_id => @payer_id})
-    mark_completed
-    forget_cart
-    render :text => :order_completed
+    @token, @payer_id = params[:token], params[:payer_id]
+    if request.post? and @token and @payer_id
+      @result =  EXPRESS_GATEWAY.purchase(cart.total_cents, {:ip => request.remote_ip, :token => @token, :payer_id => @payer_id})
+      if @result.success?
+        #send us an email
+        UserMailer.new_order_admin(cart).deliver
+        #send them an email
+        UserMailer.new_order_customer(cart,cart.email).deliver
+        #finish off
+        mark_completed :forget => true
+        @email = cart.email
+      else
+        flash[:error] = "could not perform EXPRESS_GATEWAY.purchase"
+        redirect_to :controller=>:store, :action=>:error
+      end
+    else
+      flash[:error] = "could not find token or payer id"
+      redirect_to :controller=>:store, :action=>:error
+    end
   end
 
   def cancel
-    render :text => :cancelled
+    flash[:notice] = "transaction cancelled"
+    redirect_to :controller => :store, :action => :edit
   end
 
-  #private
-  def savecart
+  private
+  def set_reference_data
     @cart = cart
-    @order = Order.new
-    @products = [3,3,3,3]
-    #    @cart.each {|index, item|
-    #  item[:count].times {
-    #    @products << item[:item]
-    #  }
-    #}
-    @order.products_singular_ids = @products
-    @order.save!
+    @menu_item = :cart
   end
 end
+

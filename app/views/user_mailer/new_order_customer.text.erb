@@ -1,0 +1,24 @@
+Thank you for shopping at sasisco.co.uk
+
+Your order Id: <%= invoice_number @order.id%>
+
+Items:
+<% @order.cartitems.each { |c| %>
+    <%= "* #{c.product.name} x#{c.amount} @ #{currency c.product.final_price}"%>
+<% } %>
+
+Subtotal:
+  <%= currency @order.sub_total%>
+
+Shipping:
+  <%= currency @order.shipping_cost%>
+
+Qualify for free shipping:
+  <%= @order.free_shipping? ? "Yes" : "No"%>
+
+Total:
+  <%= currency @order.total%>
+
+--
+sasisco.co.uk
+

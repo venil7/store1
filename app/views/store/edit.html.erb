@@ -16,7 +16,8 @@
           <% } %>
         </ul>
         <div class='submit'>
-          <%= submit_tag "Save and Checkout"%>
+          <span><abbr title="Order for &euro;50 or more">Qualify for free shipping</abbr>: <%=@cart.free_shipping? ? "Yes" : "No"%></span><br />
+          <%= submit_tag "Save and Checkout", {:class => :submit_btn}%>
           <span><span style="font-weight:bold">Subtotal: </span><%= currency @cart.sub_total %></span>
           <%= link_to "Back to shopping", {:action => :index}, {:style=>'display:block;'} %>
         </div>

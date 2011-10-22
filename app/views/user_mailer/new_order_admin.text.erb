@@ -1,0 +1,25 @@
+New Order: <%= invoice_number @order.id%>
+
+Items:
+<% @order.cartitems.each { |c| %>
+    <%= "#{c.product.id} sku:#{c.product.sku} #{c.product.name} x#{c.amount} @ #{currency c.product.final_price}"%>
+<% } %>
+
+Subtotal:
+  <%= currency @order.sub_total%>
+
+Shipping:
+  <%= currency @order.shipping_cost%>
+
+Paid for shipping:
+  <%= @order.free_shipping? ? "NO" : "YES"%>
+
+Total:
+  <%= currency @order.total%>
+
+Details:
+  <%= url_for :controller => :manage, :action => :order_details, :id => @order.id, :only_path => false %>
+
+--
+sasisco.co.uk
+

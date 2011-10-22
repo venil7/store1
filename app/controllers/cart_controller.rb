@@ -26,13 +26,10 @@ class CartController < ActionController::Base
     session[:order_id] = nil
   end
 
-  def mark_completed
-    @order.completed = true
-    @order.save
-  end
-
-  def forget_cart
-    session[:order_id] = nil
+  def mark_completed(opts={})
+    @opts = {:forget=>false}.merge(opts)
+    @order.update_attributes :completed => true
+    session[:order_id] = nil if @opts[:forget]
   end
 end
 

@@ -38,12 +38,24 @@ class Order < ActiveRecord::Base
     @sub_total
   end
 
+  def total
+    free_shipping? ? sub_total : sub_total + (5.0)
+  end
+
   def total_cents
-    sub_total * 100
+    total * 100
   end
 
   def empty?
     !cartitems.any?
+  end
+
+  def free_shipping?
+    sub_total > 50.0
+  end
+
+  def shipping_cost
+    total - sub_total
   end
 end
 

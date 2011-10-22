@@ -14,7 +14,7 @@
 		      </div>
 		      <%= render 'social'%>
 	      </div>
-	      <div class='product_decsription'>
+	      <div class='product_description'>
 		      <h1><%=@product.name%></h1>
 		      <h3>
 		        <%= content_tag :span, currency(@product.price), {:class=>:old_price} if @product.discount?%>

@@ -27,7 +27,7 @@ class StoreController < CartController
   def edit
     if request.post?
       @cart.update_amounts(request[:amounts])
-      redirect_to :action => :edit
+      redirect_to :controller=>:checkout,:action => :index
     else
      @menu_item = :cart
     end
@@ -61,6 +61,10 @@ class StoreController < CartController
       @products = Product.search(params[:id]).page(@page).per(page_size)
       render :action => :index
     end
+  end
+
+  #error
+  def error
   end
 
   private

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111010203230) do
+ActiveRecord::Schema.define(:version => 20111022174439) do
 
   create_table "badges", :force => true do |t|
     t.string   "name"
@@ -46,6 +46,10 @@ ActiveRecord::Schema.define(:version => 20111010203230) do
     t.boolean  "completed",    :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.string   "address"
+    t.string   "email"
+    t.string   "phone"
   end
 
   create_table "photos", :force => true do |t|

@@ -1,0 +1,46 @@
+<div id="templatemo_main">
+	<div id="templatemo_content">
+      <h4>Checkout</h4>
+      <div class='column_310'>
+        <h6>Delivery Details</h6>
+        <table>
+          <tr><td class='bold'>Name</td>    <td><%= @details.address["name"]%></td></tr>
+          <tr><td class='bold'>Company</td> <td><%= @details.address["company"]%></td></tr>
+          <tr><td class='bold'>Address</td> <td><%= @details.address["address1"]%></td></tr>
+          <tr><td class='bold'>City</td>    <td><%= @details.address["city"]%></td></tr>
+          <tr><td class='bold'>State</td>   <td><%= @details.address["state"]%></td></tr>
+          <tr><td class='bold'>Postcode</td><td><%= @details.address["zip"]%></td></tr>
+          <tr><td class='bold'>Country</td> <td><%= @details.address["country"]%></td></tr>
+        </table>
+      </div>
+
+      <div class='column_310'>
+        <h6>Order Details</h6>
+        <strong>Order Id:</strong> <%= invoice_number @cart.id%><br/>
+        <ul class='alternate'>
+          <% @cart.cartitems.each { |c| %>
+            <li>
+              <%=image_tag c.product.photo.url(:thumb) %>
+              <%= c.product.name %>
+              <%= currency c.product.final_price %>
+              <%= "x#{c.amount}" %>
+             </li>
+          <% } %>
+        </ul>
+        <strong>Subtotal:</strong> <span style='float:right;'><%= currency @cart.sub_total%></span><br/>
+        <strong>Delivery:</strong> <span style='float:right;'><%= currency @cart.free_shipping? ? "free" : 5%></span><br/>
+        <strong>Total:</strong>    <span style='float:right;'><%= currency @cart.total%></span><br/>
+
+        <%=form_tag :action=>:success do |f|%>
+          <%=hidden_field_tag :token, @token%>
+          <%=hidden_field_tag :payer_id, @payer_id%>
+          <%=submit_tag "Confirm Order", {:class=>:submit_btn, :style=>'float:right;'}%>
+        <%end%>
+      </div>
+  	</div>
+
+    <div id="templatemo_sidebar">
+    </div>
+    <div class="cleaner"></div>
+</div>
+
