@@ -39,7 +39,7 @@ class Order < ActiveRecord::Base
   end
 
   def total
-    free_shipping? ? sub_total : sub_total + (5.0)
+    free_shipping? ? sub_total : sub_total + SETTING.shipping_cost
   end
 
   def total_cents
@@ -51,11 +51,12 @@ class Order < ActiveRecord::Base
   end
 
   def free_shipping?
-    sub_total > 50.0
+    sub_total >= SETTING.free_shipping_threshold
   end
 
   def shipping_cost
-    total - sub_total
+    #total - sub_total
+    free_shipping? ? 0.0 : SETTING.shipping_cost
   end
 end
 

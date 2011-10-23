@@ -26,8 +26,9 @@ class StoreController < CartController
 
   def edit
     if request.post?
-      @cart.update_amounts(request[:amounts])
-      redirect_to :controller=>:checkout,:action => :index
+      @cart.update_amounts(params[:amounts])
+      redirect_to :controller=>:checkout,:action => :index if not params[:commit]
+      #render :text => request[:amounts]
     else
      @menu_item = :cart
     end
@@ -74,6 +75,7 @@ class StoreController < CartController
 
   def set_reference_data
     @page = params[:page] || 0
+    @setting = SETTING
     @cart = cart
     @categories = Category.limit(10)
     @popular = Product.popular.limit(10)

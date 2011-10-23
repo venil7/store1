@@ -22,13 +22,13 @@
 		      </h3>
 		      <%= form_tag :action=>:add,:id=>@product.id do %>
              <%= select_tag :amount, options_for_select((1..50).to_a) %>
-             <%= submit_tag("add to cart") %>
+             <%= submit_tag("add to cart", {:class=>:submit_btn}) %>
           <% end %>
 		      <p><%=@product.short_description%></p>
 		      <p><%=@product.long_description%></p>
 	      </div>
       </div>
-      <%#= render 'shared/disqus' %>
+      <%= render 'shared/disqus' %>
   </div>
 
   <div id="templatemo_sidebar">

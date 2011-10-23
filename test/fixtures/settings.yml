@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  shipping_cost: 1.5
+  free_shipping_threshold: 1.5
+
+two:
+  shipping_cost: 1.5
+  free_shipping_threshold: 1.5

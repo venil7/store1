@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111022174439) do
+ActiveRecord::Schema.define(:version => 20111022225044) do
 
   create_table "badges", :force => true do |t|
     t.string   "name"
@@ -74,6 +74,12 @@ ActiveRecord::Schema.define(:version => 20111022174439) do
     t.integer  "category_id"
     t.integer  "badge_id"
     t.string   "sku"
+    t.integer  "stock",             :default => 0
+  end
+
+  create_table "settings", :force => true do |t|
+    t.float "shipping_cost",           :default => 5.0
+    t.float "free_shipping_threshold", :default => 50.0
   end
 
 end

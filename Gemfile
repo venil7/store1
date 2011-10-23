@@ -1,13 +1,17 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.5'
+gem 'rails', '3.0.10'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+gem 'mysql2', '~> 0.2.11'
 
-gem 'meta_where' #for advanced searching
+group :development, :test do
+  gem 'sqlite3'
+end
+
+gem 'meta_where' #for advanced querying
 #gem 'meta_search' #for advanced searching
 
 gem 'paperclip' #handle attach

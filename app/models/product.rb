@@ -22,6 +22,9 @@ class Product < ActiveRecord::Base
   scope :non_discounted, where({:discount => 0}|{:discount => nil})
   scope :with_badge, lambda {|badge| Product.joins(:badge).where('badges.name'=>badge)}
   scope :recently_added, where(:created_at.gte => 30.days.ago)
+  scope :out_of_stock, where(:stock => 0)
+  scope :in_stock, where(:stock.ne => 0)
+
 
 
   #virtual fields

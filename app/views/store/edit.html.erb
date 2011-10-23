@@ -8,7 +8,7 @@
           <% @cart.cartitems.each { |c| %>
             <li>
               <%=image_tag c.product.photo.url(:thumb) %>
-              <%= c.product.name %>
+              <%= link_to c.product.name, :action=>:product, :id=>c.product.id %>
               <%= currency c.product.final_price %>
               <%= select_tag "amounts[#{c.product_id}]", options_for_select((1..50).to_a, c.amount) %>
               <%= link_to  "", {:action=>:delete, :id=>c.product_id}, {:class=>:delete, :title=>"Delete from cart"} %>
@@ -16,12 +16,15 @@
           <% } %>
         </ul>
         <div class='submit'>
-          <span><abbr title="Order for &euro;50 or more">Qualify for free shipping</abbr>: <%=@cart.free_shipping? ? "Yes" : "No"%></span><br />
-          <%= submit_tag "Save and Checkout", {:class => :submit_btn}%>
-          <span><span style="font-weight:bold">Subtotal: </span><%= currency @cart.sub_total %></span>
+          <span>Shipping cost: <%=currency @order.shipping_cost %>
+            <small><%=@cart.free_shipping? ? nil : " *order for #{currency @setting.free_shipping_threshold} or more to qualify for free shipping"%></small>
+          </span><br />
+          <%= image_submit_tag "http://goo.gl/Vleii"%>
+          <%= submit_tag "Save and Continue", {:class => :submit_btn}%>
+          <span><span style="font-weight:bold">Total: </span><%= currency @cart.total %></span>
           <%= link_to "Back to shopping", {:action => :index}, {:style=>'display:block;'} %>
         </div>
-      <% end %>
+      <% end if not @cart.empty?%>
     </div>
 	</div>
 
