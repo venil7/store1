@@ -1,7 +1,7 @@
 class AddCategoryIdToProduct < ActiveRecord::Migration
   def self.up
-    add_column :products, :category_id, :intereger
-    add_column :products, :badge_id, :intereger
+    add_column :products, :category_id, :integer
+    add_column :products, :badge_id, :integer
   end
 
   def self.down
@@ -9,3 +9,4 @@ class AddCategoryIdToProduct < ActiveRecord::Migration
     remove_column :products, :badge_id
   end
 end
+
