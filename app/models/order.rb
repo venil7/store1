@@ -3,6 +3,7 @@ class Order < ActiveRecord::Base
   has_many :products, :through => :cartitems
 
   scope :completed, order("updated_at").where(:completed => true)
+  scope :shipped, order("updated_at").where(:shipped => true)
 
   def add_product(product_id, amount=1)
     save if !persisted?
