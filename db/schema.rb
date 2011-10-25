@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111024202732) do
+ActiveRecord::Schema.define(:version => 20111023165415) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -59,6 +59,9 @@ ActiveRecord::Schema.define(:version => 20111024202732) do
     t.integer "amount",     :default => 0, :null => false
   end
 
+  add_index "cartitems", ["order_id"], :name => "index_cartitems_on_order_id"
+  add_index "cartitems", ["product_id"], :name => "index_cartitems_on_product_id"
+
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.string   "description"
@@ -66,6 +69,8 @@ ActiveRecord::Schema.define(:version => 20111024202732) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "categories", ["category_id"], :name => "index_categories_on_category_id"
 
   create_table "messages", :force => true do |t|
     t.string   "name"
@@ -76,41 +81,45 @@ ActiveRecord::Schema.define(:version => 20111024202732) do
   end
 
   create_table "orders", :force => true do |t|
-    t.string   "instructions"
-    t.boolean  "completed",    :default => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "name"
     t.string   "address"
     t.string   "email"
     t.string   "phone"
+    t.string   "instructions"
+    t.boolean  "completed",    :default => false
+    t.boolean  "shipped",      :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "photos", :force => true do |t|
     t.integer  "product_id"
     t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "products", :force => true do |t|
     t.string   "name"
-    t.float    "price",             :default => 0.0
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "sku"
+    t.integer  "category_id"
+    t.integer  "badge_id"
     t.string   "short_description"
     t.string   "long_description"
     t.integer  "discount",          :default => 0
-    t.integer  "category_id"
-    t.integer  "badge_id"
-    t.string   "sku"
+    t.float    "price",             :default => 0.0
     t.integer  "stock",             :default => 0
-    t.boolean  "shipped"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_index "products", ["badge_id"], :name => "index_products_on_badge_id"
+  add_index "products", ["category_id"], :name => "index_products_on_category_id"
+  add_index "products", ["sku"], :name => "index_products_on_sku"
 
   create_table "settings", :force => true do |t|
     t.float "shipping_cost",           :default => 5.0

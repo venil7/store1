@@ -7,9 +7,13 @@ class CreateCartitems < ActiveRecord::Migration
 
       #t.timestamps
     end
+
+    add_index :cartitems, :order_id
+    add_index :cartitems, :product_id
   end
 
   def self.down
     drop_table :cartitems
   end
 end
+

@@ -8,6 +8,7 @@ class CreateCategories < ActiveRecord::Migration
       t.timestamps
     end
 
+    add_index :categories, :category_id
     Category.create :name => "General", :description => "Genereal"
   end
 

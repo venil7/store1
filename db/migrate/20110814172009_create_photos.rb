@@ -4,6 +4,12 @@ class CreatePhotos < ActiveRecord::Migration
       t.integer :product_id
       t.string :description
 
+      #paperclip bit
+      t.string  :photo_file_name
+      t.string :photo_content_type
+      t.integer :photo_file_size
+      t.datetime :photo_updated_at
+
       t.timestamps
     end
   end
@@ -12,3 +18,4 @@ class CreatePhotos < ActiveRecord::Migration
     drop_table :photos
   end
 end
+

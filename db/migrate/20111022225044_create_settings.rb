@@ -5,8 +5,8 @@ class CreateSettings < ActiveRecord::Migration
       t.float :free_shipping_threshold, :default => 50.0
 
     end
-    Setting.create :shipping_cost => 5.0, :free_shipping_threshold => 50.0
 
+    Setting.create :shipping_cost => 5.0, :free_shipping_threshold => 50.0
   end
 
   def self.down
