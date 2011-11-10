@@ -17,6 +17,7 @@ class Product < ActiveRecord::Base
   validates :long_description, :presence => true
   validates :short_description, :presence => true
 
+  default_scope order("price")
   scope :popular, order("updated_at") #requires review!!
   scope :discounted, where(:discount.gt => 0)
   scope :non_discounted, where({:discount => 0}|{:discount => nil})
@@ -42,7 +43,11 @@ class Product < ActiveRecord::Base
   end
 
   def photo
-    photo? ? @photo : nil
+    if photo?
+       @photo
+     else
+      (Photo.find APP_CONFIG['no_image_id']).photo
+     end
   end
 
   #helper functions

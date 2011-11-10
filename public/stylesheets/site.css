@@ -152,3 +152,5 @@ ul.alternate li img {vertical-align:middle;}
 ul.alternate li {list-style:none outside none;}
 abbr {cursor:help;}
 
+div#disqus_thread {display:block;float:left;width:600px;}
+
