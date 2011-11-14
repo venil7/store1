@@ -24,6 +24,8 @@
              <%= select_tag :amount, options_for_select((1..50).to_a) %>
              <%= submit_tag("add to cart", {:class=>:submit_btn}) %>
           <% end %>
+          <br />
+ 		      <p><strong>Product code:</strong> <%=@product.sku%></p>
 		      <p><%=@product.short_description%></p>
 		      <p><%=@product.long_description%></p>
 	      </div>
