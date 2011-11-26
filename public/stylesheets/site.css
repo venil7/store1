@@ -2,7 +2,7 @@ body{color:#666;font-family:Helevetica, Arial, sans-serif;font-size:13px;line-he
 a,a:link,a:visited{color:#06C;}
 a:hover{color:#C00;text-decoration:none;}
 p{margin:0;padding:0 0 10px;}
-h1{font-size:40px;font-weight:700;;margin:0 0 30px;padding:5px 0;}
+h1{font-size:40px;font-weight:700;;margin:0 0 30px;padding:5px 0;line-height:30px;}
 h2{font-size:28px;font-weight:400;line-height:28px;color:#000;margin:0 0 30px;padding:0;}
 h3{font-size:21px;color:#e2d8bd;margin:0 0 20px;padding:0;}
 h4{font-size:18px;margin:0 0 20px;padding:20px 0 0 0;}
@@ -120,7 +120,7 @@ ul#product_list li div.product_image img {padding:4px; width:112px;height:112px;
 #templatemo_content .product_detail .product_detail_images .social {display:block;clear:both;}
 
 #templatemo_content .product_detail .product_description {float:left;display:block;width:300px;}
-#templatemo_content .product_detail .product_description h1 {padding: 0 0 5px 0;color:#666;font-size:24px;margin:0;}
+#templatemo_content .product_detail .product_description h1 {padding: 0 0 5px 0;color:#666;font-size:24px;margin:0;line-size:30px;}
 
 #cart_editor {padding-left:0px;display:block;width:600px;}
 #cart_editor h1 {color: #666;font-size: 18px;padding-top: 20px;}
