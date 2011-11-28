@@ -3,6 +3,13 @@
     <div id="cart_editor">
       <h1>Your cart</h1>
       <%= form_tag do %>
+        <table style='width:100%;text-align:left;'>
+         <tr>
+          <th style='width:83%;'>product</th>
+          <th>quantity</th>
+          <th>delete</th>
+         </tr>
+        </table>
         <ul class='alternate'>
           <%= hidden_field_tag :order_id, @cart.id %>
           <% @cart.cartitems.each { |c| %>
@@ -20,8 +27,9 @@
             <small><%=@cart.free_shipping? ? nil : " *order for #{currency @setting.free_shipping_threshold} or more to qualify for free shipping"%></small>
           </span><br />
           <%= image_submit_tag "http://goo.gl/Vleii"%>
-          <%= submit_tag "Save and Continue", {:class => :submit_btn}%>
-          <span><span style="font-weight:bold">Total: </span><%= currency @cart.total %></span>
+          <%= submit_tag "Update Cart", {:class => :submit_btn}%>
+          <span><strong>Subtotal: </strong><%= currency @cart.sub_total %></span> <br />
+          <span><strong>Total: </strong><%= currency @cart.total %></span>
           <%= link_to "Back to shopping", {:action => :index}, {:style=>'display:block;'} %>
         </div>
       <% end if not @cart.empty?%>

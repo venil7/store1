@@ -61,7 +61,8 @@ class Product < ActiveRecord::Base
        #fields = [:name, :short_description, :long_description]
        meta = {:name.matches_any => tokens} |
               {:short_description.matches_any => tokens} |
-              {:long_description.matches_any => tokens}
+              {:long_description.matches_any => tokens} |
+              {:sku.matches_any => tokens}
        where(meta)
     else
       where(0)

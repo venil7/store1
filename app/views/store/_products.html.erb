@@ -1,3 +1,4 @@
+<%= paginate @products %>
 <ul id='product_list'>
 <%if products.any? %>
 <% products.each { |p| %>
@@ -6,10 +7,17 @@
       <div class='product_image'>
         <%= link_to(image_tag(p.photo.url(:small)), :action => :product, :id=>p.id) %>
       </div>
-      <div><%= p.name%></div>
+      <div class='product_name'><strong><%= p.name%></strong></div>
       <div class='product_descr'>
          <%= content_tag :span, number_to_currency(p.price, {:unit=>"€"}), {:class=>:old_price} if p.discount?%>
-         <%= content_tag :span, number_to_currency(p.final_price, {:unit=>"€"}), {:class=>:price}%>
+         <%= content_tag :span, number_to_currency(p.final_price, {:unit=>"€"}), {:class=>:price}%> <br />
+         <%= content_tag :div, p.short_description %>
+      </div>
+      <div class='product_form'>
+       <%= form_tag :action=>:add, :id=>p.id do %>
+        <%= select_tag :amount, options_for_select((1..50).to_a) %>
+        <%= submit_tag 'Add' %>
+       <% end %>
       </div>
       <%= link_to (content_tag :div), {:action=>:add, :id=>p.id}, {:class=>'instant_cart', :title=>'Add to Cart'} %>
     </div>
@@ -19,4 +27,5 @@
   <span>No Products found.</span>
 <% end %>
 </ul>
+<%= paginate @products %>
 
