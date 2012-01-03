@@ -26,8 +26,9 @@
           <span>Shipping cost: <%=currency @order.shipping_cost %>
             <small><%=@cart.free_shipping? ? nil : " *order for #{currency @setting.free_shipping_threshold} or more to qualify for free shipping"%></small>
           </span><br />
-          <%= image_submit_tag "http://goo.gl/Vleii"%>
-          <%= submit_tag "Update Cart", {:class => :submit_btn}%>
+          <%= image_submit_tag "http://goo.gl/gqevb", :name=>"paypal", :value => "paypal"%>
+          <%= submit_tag "Bank Transfer", {:class => :submit_btn, :name => "bank_transfer"}%>
+          <%= submit_tag "Update Cart", {:class => :submit_btn, :name => "update_cart"}%>
           <span><strong>Subtotal: </strong><%= currency @cart.sub_total %></span> <br />
           <span><strong>Total: </strong><%= currency @cart.total %></span>
           <%= link_to "Back to shopping", {:action => :index}, {:style=>'display:block;'} %>

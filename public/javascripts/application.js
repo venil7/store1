@@ -4,7 +4,7 @@ $(function() {
   $('.darkruby').corner('3px');
 
   //lava lamp style menu
-  gooeymenu.setup({id:'menu'});
+  //gooeymenu.setup({id:'menu'});
 
   //slides
   $("#templatemo_banner").slides({

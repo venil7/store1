@@ -1,17 +1,17 @@
 class CheckoutController < CartController
   before_filter :set_reference_data
-  def index
+  def paypal
     #redirect to paypal express
     response = EXPRESS_GATEWAY.setup_purchase(cart.total_cents,
       :ip                => request.remote_ip,
-      :return_url        => url_for(:controller => :checkout, :action => :confirm, :only_path => false),
+      :return_url        => url_for(:controller => :checkout, :action => :paypal_confirm, :only_path => false),
       :cancel_return_url => url_for(:controller => :checkout, :action => :cancel, :only_path => false),
       :order_id          => cart.id)
     redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
   end
 
   #this action is run straight after paypal authorisation
-  def confirm
+  def paypal_confirm
     @token, @payer_id = params[:token], params[:PayerID]
     if @token and @payer_id
       @details = EXPRESS_GATEWAY.details_for(@token)
@@ -33,6 +33,13 @@ class CheckoutController < CartController
     end
   end
 
+  #bank transfer checkout
+  def bank_transfer
+    if request.post?
+    end
+  end
+  
+  
   #perform purchase after confirmation
   def success
     @token, @payer_id = params[:token], params[:payer_id]

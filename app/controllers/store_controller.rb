@@ -27,8 +27,8 @@ class StoreController < CartController
   def edit
     if request.post?
       @cart.update_amounts(params[:amounts])
-      redirect_to :controller=>:checkout,:action => :index if not params[:commit]
-      #render :text => request[:amounts]
+      redirect_to :controller => :checkout, :action => :paypal if params[:paypal]
+      redirect_to :controller => :checkout, :action => :bank_transfer if params[:bank_transfer]
     else
      @menu_item = :cart
     end
