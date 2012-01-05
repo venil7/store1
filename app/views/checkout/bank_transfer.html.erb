@@ -1,10 +1,36 @@
-<pre>form goes gere:
-name
-surname
-address
-phone 
-email
-instructions
+<div id="templatemo_main">
+	<div id="templatemo_content">
+		<div id="cart_editor">
+			<h1>Order Details</h1>
+			
+			<% if  @bank_transfer_details.errors.any? %>
+				<ul class="validation-error">
+					<% @bank_transfer_details.errors.full_messages.each do |message| %>
+						<li>
+							<%= message %>
+						</li>
+					<% end %>
+				</ul>
+			<% end %>
+			
+			<% form_for @bank_transfer_details, :as => :bank_transfer_details, :url => {:action=>:bank_transfer} do |f| %>
+				<%= f.label :name %>
+				<%= f.text_field :name %> <br />
+				<%= f.label :address %>
+				<%= f.text_field :address %> <br />
+				<%= f.label :phone %>
+				<%= f.text_field :phone %> <br />
+				<%= f.label :email %>
+				<%= f.text_field :email %> <br />
+				<%= f.label :instructions %>
+				<%= f.text_field :instructions %> <br />
+				<%= f.submit :submit %> 
+			<% end %>
+		</div>
+	</div>
 
+    <div id="templatemo_sidebar">
+		</div>
+		<div class="cleaner"></div>
+</div>
 
-</pre>

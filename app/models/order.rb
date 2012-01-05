@@ -26,6 +26,15 @@ class Order < ActiveRecord::Base
     }
   end
 
+  def apply_bank_transfer_details(bank_transfer_details)
+    self.name = bank_transfer_details.name
+    self.address = bank_transfer_details.address
+    self.email = bank_transfer_details.email
+    self.phone = bank_transfer_details.phone
+    self.instructions = bank_transfer_details.instructions 
+  end
+
+
   def delete_product(product_id)
     @cartitem = cartitems.select{|c| c.product_id == product_id}.first
     @cartitem.destroy

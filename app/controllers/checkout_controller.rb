@@ -35,24 +35,28 @@ class CheckoutController < CartController
 
   #bank transfer checkout
   def bank_transfer
+    @bank_transfer_details = BankTransferDetails.new if request.get?
     if request.post?
+      @bank_transfer_details = BankTransferDetails.new(params[:bank_transfer_details])
+      if @bank_transfer_details.valid?
+        cart.apply_bank_transfer_details(@bank_transfer_details)
+        @cart.source = :bank_transfer
+        send_emails
+        mark_completed :forget => true
+        render :action => "success"
+      end
     end
   end
   
-  
   #perform purchase after confirmation
-  def success
+  def paypal_success
     @token, @payer_id = params[:token], params[:payer_id]
     if request.post? and @token and @payer_id
       @result =  EXPRESS_GATEWAY.purchase(cart.total_cents, {:ip => request.remote_ip, :token => @token, :payer_id => @payer_id})
       if @result.success?
-        #send us an email
-        UserMailer.new_order_admin(cart).deliver
-        #send them an email
-        UserMailer.new_order_customer(cart,cart.email).deliver
-        #finish off
+        send_emails
         mark_completed :forget => true
-        @email = cart.email
+        render :action => "success"        
       else
         flash[:error] = "could not perform EXPRESS_GATEWAY.purchase"
         redirect_to :controller=>:store, :action=>:error
@@ -63,12 +67,24 @@ class CheckoutController < CartController
     end
   end
 
+  def success
+    #happy path, rendesr success
+  end
+
   def cancel
     flash[:notice] = "transaction cancelled"
     redirect_to :controller => :store, :action => :edit
   end
 
   private
+  def send_emails
+     #send us an email
+      UserMailer.new_order_admin(cart).deliver
+      #send them an email
+      UserMailer.new_order_customer(cart, cart.email).deliver
+      #finish off
+  end
+  
   def set_reference_data
     @cart = cart
     @menu_item = :cart

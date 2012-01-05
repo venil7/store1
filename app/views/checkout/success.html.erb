@@ -2,7 +2,7 @@
 	<div id="templatemo_content">
       <h4>Thank you!</h4>
       <div class='column_310'>
-        Your Order #<%= invoice_number @cart.id %> is now <strong>confirmed</strong>, you should receive an email to <%=@email%> shortly.<br />
+        Your Order #<%= invoice_number @cart.id %> is now <strong>confirmed</strong>, you should receive an email to <%=@cart.email%> shortly.<br />
         <%=link_to "Continue shopping", {:controller=>:store, :action=>:index}%>
       </div>
     </div>

@@ -31,7 +31,7 @@
         <strong>Delivery:</strong> <span style='float:right;'><%= currency @cart.free_shipping? ? "free" : 5%></span><br/>
         <strong>Total:</strong>    <span style='float:right;'><%= currency @cart.total%></span><br/>
 
-        <%=form_tag :action=>:success do |f|%>
+        <%=form_tag :action=>:paypal_success do |f|%>
           <%=hidden_field_tag :token, @token%>
           <%=hidden_field_tag :payer_id, @payer_id%>
           <%=submit_tag "Confirm Order", {:class=>:submit_btn, :style=>'float:right;'}%>
