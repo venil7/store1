@@ -90,7 +90,7 @@ form{margin:0;padding:0;}
 form .input_field{width:350px;background:#fff;border:1px solid #dfdfdf;padding:5px 0;}
 form label{display:block;width:100px;margin-right:10px;font-size:14px;}
 form textarea{width:350px;height:200px;background:#fff;border:1px solid #dfdfdf;}
-form .submit_btn{background:#EEE;border:1px solid #CCC;color:#666;padding:5px 10px;cursor:pointer;}
+form .submit_btn{background:#EEE;border:1px solid #CCC;color:#333;padding:5px 10px;cursor:pointer;}
 #templatemo_footer{width:970px;text-align:center;/*background:url(/images/templatemo_footer.png) no-repeat*/;margin:0 auto;padding:20px 0;}
 img,#gallery a{border:none;}
 

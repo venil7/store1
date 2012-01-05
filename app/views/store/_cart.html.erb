@@ -15,9 +15,9 @@
       <%#= link_to "clear", :action => :clear %>
       <strong>subtotal: </strong><%= currency(cart.sub_total) %>
       <div>
-        <%= link_to "edit cart", {:action => :edit} %>
-        <%#= link_to "checkout", {:controller => :checkout}, {:class=>:checkout} %>
-        <%= link_to image_tag('http://goo.gl/Vleii'),{:controller => :checkout},{:style=>'float:right;'} %>
+        <%= form_tag({:action => :edit},{:method=>:get,:style=>"float:right;"}) do %>
+           <%= submit_tag("checkout", {:class=>:submit_btn,:name=>nil})%>
+        <% end %>
       </div>
     <%else%>
       <div class='empty'>Cart is empty</div>
