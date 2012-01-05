@@ -8,7 +8,7 @@ h3{font-size:21px;color:#e2d8bd;margin:0 0 20px;padding:0;}
 h4{font-size:18px;margin:0 0 20px;padding:20px 0 0 0;}
 h5{font-size:16px;margin:0 0 10px;padding:0;}
 h6{font-size:14px;margin:0 0 5px;padding:0;}
-input {border:1px solid #aaa;color:#aaa;background:#eee}
+input {border:1px solid #aaa;color:#333;background:#eee}
 .cleaner{clear:both;width:100%;height:0;font-size:0;}
 .cleaner_h10{clear:both;width:100%;height:10px;}
 .cleaner_h20{clear:both;width:100%;height:20px;}
@@ -50,14 +50,14 @@ span.price {color:green;}
 #templatemo_banner a.next {position:absolute;top:100px;right:-24px;z-index:7;color:transparent;background:url(/images/arrow_next.png);width:24px;height:43px;}
 #templatemo_menu{clear:both;width:900px;height:28px;background:url(/images/templatemo_menu.png) no-repeat;margin:0 auto;padding:13px 35px;}
 #templatemo_menu ul{list-style:none;margin:0;padding:0;position:relative;}
-#templatemo_menu ul li{z-index:2;display:inline;margin:0;padding:0;position:relative;}
-#templatemo_menu ul li a{z-index:2;position:relative;float:left;display:block;width:102px;height:27px;font-size:14px;text-align:center;text-decoration:none;color:#666;font-weight:700;outline:none;margin:0 5px 0 0;padding:5px 0 0;}
-/*#templatemo_menu ul li a:hover,*/#templatemo_menu ul li .selected{color:#fff;background:salmon;border:1px solid #fff;}
-#templatemo_menu ul li.active {position:absolute;width:0;background:Salmon;z-index:1;border-radius:5px;}
+#templatemo_menu ul li{display:inline;margin:0;padding:0;position:relative;}
+#templatemo_menu ul li a{position:relative;float:left;display:block;width:102px;height:27px;font-size:14px;text-align:center;text-decoration:none;color:#666;font-weight:700;outline:none;margin:0 5px 0 0;padding:5px 0 0 0;border: 1px solid transparent;}
+#templatemo_menu ul li .selected{color:#fff;background:salmon;border:1px solid #fff;}
+#templatemo_menu ul li:hover :not(.selected){color:#fff;background:#aaa;border:1px solid #fff;}
 #templatemo_main{clear:both;width:980px;background:url(/images/templatemo_main.png) center repeat-y;margin:0 auto;padding:0 0 20px 0;}
 #templatemo_main_bottom{width:970px;height:5px;background:url(/images/templatemo_main_bottom.png) no-repeat;margin:0 auto;}
 #templatemo_content{float:left;width:625px;padding:0 0 0 40px;}
-#templatemo_sidebar{float:right;width:310px;padding-top:20px;}
+#templatemo_sidebar{float:right;width:310px;padding-top:20px;} 
 #templatemo_sidebar .sidebar_title {background: none repeat scroll 0 0 salmon;color: #FFFFFF;display: block;font-size: 20px;font-weight: 700;height: 25px;padding-left: 40px;padding-top: 7px;width: 265px;}
 #templatemo_sidebar .sidebar_box{padding:0 30px;}
 #templatemo_sidebar .cart{background:url(/images/cart.png) no-repeat salmon;}
@@ -97,7 +97,7 @@ img,#gallery a{border:none;}
 ul#product_list {padding-left:0px;}
 ul#product_list li {float:left;display:block;width:100%;list-style:none;padding:0 35px 5px 0;}
 ul#product_list li div.product {display:block;float:left;position:relative;width:610px;}
-ul#product_list li div.product:hover {background:#DDD;}
+
 ul#product_list li div.product_name {display:block;float:left;width:460px;padding-top:5px;}
 ul#product_list li div.product_descr {display:block;float:left;width:460px;}
 ul#product_list li div.product_form {display:block;position:absolute;bottom:4px;right:20px;}
@@ -125,6 +125,10 @@ ul#product_list li div.product_image img {padding:4px; width:112px;height:112px;
 
 #templatemo_content .product_detail .product_description {float:left;display:block;width:300px;}
 #templatemo_content .product_detail .product_description h1 {padding: 0 0 5px 0;color:#666;font-size:24px;margin:0;line-size:30px;}
+
+#templatemo_content ul#product_list li.even div.product {background:#ddd;}
+#templatemo_content ul#product_list li div.product:hover {background:#cdcdcd;}
+
 
 #cart_editor {padding-left:0px;display:block;width:600px;}
 #cart_editor h1 {color: #666;font-size: 18px;padding-top: 20px;}
