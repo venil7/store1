@@ -1,7 +1,10 @@
 <div id="templatemo_main">
 	<div id="templatemo_content">
-		<div id="cart_editor">
-			<h1>Order Details</h1>
+		<div id="bank_transfer_form">
+			<h4>Disclaimer</h4>
+			disclaimer goes here
+
+			<h4>Order Details</h4>
 			
 			<% if  @bank_transfer_details.errors.any? %>
 				<ul class="validation-error">
@@ -13,18 +16,26 @@
 				</ul>
 			<% end %>
 			
+			<p><%=flash[:notice]%></p>
 			<% form_for @bank_transfer_details, :as => :bank_transfer_details, :url => {:action=>:bank_transfer} do |f| %>
-				<%= f.label :name %>
-				<%= f.text_field :name %> <br />
-				<%= f.label :address %>
-				<%= f.text_field :address %> <br />
-				<%= f.label :phone %>
-				<%= f.text_field :phone %> <br />
-				<%= f.label :email %>
-				<%= f.text_field :email %> <br />
-				<%= f.label :instructions %>
-				<%= f.text_field :instructions %> <br />
-				<%= f.submit :submit %> 
+                <div class="cleaner_h10"></div>
+					<%= f.label :name %>
+					<%= f.text_field :name, {:class=>:input_field} %>
+                <div class="cleaner_h10"></div>
+					<%= f.label :address %>
+					<%= f.text_field :address, {:class=>:input_field} %>
+                <div class="cleaner_h10"></div>
+					<%= f.label :phone %>
+					<%= f.text_field :phone, {:class=>:input_field} %>
+                <div class="cleaner_h10"></div>
+					<%= f.label :email %>
+					<%= f.text_field :email, {:class=>:input_field} %>
+                <div class="cleaner_h10"></div>
+					<%= f.label :instructions %>
+					<%= f.text_area :instructions, {:class=>:input_field} %>
+                <div class="cleaner_h10"></div>
+                    <%= f.submit "Submit", {:class=>:submit_btn} %>
+                    <%= f.submit "Reset", {:class=>:submit_btn,:type=>:reset} %>
 			<% end %>
 		</div>
 	</div>
