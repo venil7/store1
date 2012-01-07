@@ -71,6 +71,16 @@ class Order < ActiveRecord::Base
     free_shipping? ? 0.0 : SETTING.shipping_cost
   end
 
+  
+  def to_pdf
+    return @pdf if @pdf
+    invoice = Payday::Invoice.new(:invoice_number => id)
+    cartitems.each {|c|
+      invoice.line_items << Payday::LineItem.new(:price => c.product.final_price, :quantity => c.amount, :description => c.product.name)
+    }
+    @pdf = invoice.render_pdf
+  end
+
   #invoice override methods
   # def paid_at
   #   updated_at

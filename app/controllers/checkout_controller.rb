@@ -11,17 +11,7 @@ class CheckoutController < CartController
   end
 
   def pdf
-    @order = cart
-    invoice = Payday::Invoice.new(:invoice_number => @order.id)
-    #invoice.line_items << Payday::LineItem.new(:price => ci.product.price, :quantity => ci.amount, :description => "cc")
-    @order.cartitems.each {|c|
-      invoice.line_items << Payday::LineItem.new(:price => c.product.final_price, :quantity => c.amount, :description => c.product.name)
-    }
-    send_data invoice.render_pdf, :filename => "invoice#{@order.id}.pdf"
-  end
-
-  def pd
-    render :text => cart.cartitems.map {|c| "id:#{c.id}-pr:#{c.product.price}-am:#{c.amount}" }
+    send_data @order.to_pdf, :filename => "invoice#{@order.id}.pdf"
   end
 
   #this action is run straight after paypal authorisation
@@ -56,8 +46,9 @@ class CheckoutController < CartController
         cart.apply_bank_transfer_details(@bank_transfer_details)
         @cart.source = :bank_transfer
         send_emails
-        mark_completed :forget => true
         render :action => "success"
+        send_data cart.to_pdf, :filename => "invoice.pdf"
+        mark_completed :forget => true
       end
     end
   end
@@ -92,11 +83,11 @@ class CheckoutController < CartController
 
   private
   def send_emails
-     #send us an email
-      UserMailer.new_order_admin(cart).deliver
-      #send them an email
-      UserMailer.new_order_customer(cart, cart.email).deliver
-      #finish off
+    #send us an email
+    UserMailer.new_order_admin(cart).deliver
+    #send them an email
+    UserMailer.new_order_customer(cart).deliver
+    #finish off
   end
   
   def set_reference_data
