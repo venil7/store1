@@ -10,6 +10,20 @@ class CheckoutController < CartController
     redirect_to EXPRESS_GATEWAY.redirect_url_for(response.token)
   end
 
+  def pdf
+    @order = cart
+    invoice = Payday::Invoice.new(:invoice_number => @order.id)
+    #invoice.line_items << Payday::LineItem.new(:price => ci.product.price, :quantity => ci.amount, :description => "cc")
+    @order.cartitems.each {|c|
+      invoice.line_items << Payday::LineItem.new(:price => c.product.final_price, :quantity => c.amount, :description => c.product.name)
+    }
+    send_data invoice.render_pdf, :filename => "invoice#{@order.id}.pdf"
+  end
+
+  def pd
+    render :text => cart.cartitems.map {|c| "id:#{c.id}-pr:#{c.product.price}-am:#{c.amount}" }
+  end
+
   #this action is run straight after paypal authorisation
   def paypal_confirm
     @token, @payer_id = params[:token], params[:PayerID]

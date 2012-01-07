@@ -1,4 +1,6 @@
 class Order < ActiveRecord::Base
+#  include Payday::Invoiceable
+
   has_many :cartitems, :dependent => :destroy
   has_many :products, :through => :cartitems
 
@@ -68,5 +70,18 @@ class Order < ActiveRecord::Base
     #total - sub_total
     free_shipping? ? 0.0 : SETTING.shipping_cost
   end
+
+  #invoice override methods
+  # def paid_at
+  #   updated_at
+  # end
+
+  # def due_at
+  #   nil
+  # end
+
+  # def line_items
+  #   cartitems
+  # end
 end
 

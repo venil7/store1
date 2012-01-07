@@ -68,5 +68,6 @@ class Product < ActiveRecord::Base
       where(0)
     end
   end
+
 end
 
