@@ -29,6 +29,7 @@ class CartController < ActionController::Base
   def mark_completed(opts={})
     @opts = {:forget=>false}.merge(opts)
     @order.update_attributes :completed => true
+    flash[:order_id] = @order.id
     session[:order_id] = nil if @opts[:forget]
   end
 end

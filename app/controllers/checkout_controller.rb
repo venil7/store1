@@ -11,7 +11,16 @@ class CheckoutController < CartController
   end
 
   def pdf
-    send_data @order.to_pdf, :filename => "invoice#{@order.id}.pdf"
+    send_data @order.to_pdf, :filename => @order.pdf_name
+  end
+
+  def invoice
+    begin
+      @order = Order.find(flash[:order_id])
+      send_data @order.to_pdf, :filename => @order.pdf_name
+    rescue
+      redirect_to :controller => :store, :action => :index
+    end
   end
 
   #this action is run straight after paypal authorisation
@@ -22,11 +31,11 @@ class CheckoutController < CartController
 
       if @details.success?
         @address = "#{@details.address['company']} #{@details.address['address1']} #{@details.address['address2']} #{@details.address['city']} #{@details.address['state']} #{@details.address['zip']} #{@details.address['country']}"
-        @cart.update_attributes! :name=>@details.name,
-                                 :address=>@address,
-                                 :email=>@details.email,
-                                 :phone=>@details.contact_phone,
-                                 :instructions=>@details.message
+        @cart.update_attributes! :name => @details.name,
+                                 :address => @address,
+                                 :email => @details.email,
+                                 :phone => @details.contact_phone,
+                                 :instructions => @details.message
       else
         flash[:error] = "could not perform EXPRESS_GATEWAY.details"
         redirect_to :controller=>:store, :action=>:error
@@ -47,7 +56,7 @@ class CheckoutController < CartController
         @cart.source = :bank_transfer
         send_emails
         render :action => "success"
-        send_data cart.to_pdf, :filename => "invoice.pdf"
+        #send_data cart.to_pdf, :filename => "invoice.pdf"
         mark_completed :forget => true
       end
     end

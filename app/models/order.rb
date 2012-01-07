@@ -74,24 +74,27 @@ class Order < ActiveRecord::Base
   
   def to_pdf
     return @pdf if @pdf
-    invoice = Payday::Invoice.new(:invoice_number => id)
-    cartitems.each {|c|
-      invoice.line_items << Payday::LineItem.new(:price => c.product.final_price, :quantity => c.amount, :description => c.product.name)
+    invoice = Payday::Invoice.new(:invoice_number => id, 
+                                  :bill_to => name,
+                                  :ship_to => address,
+                                  :due_date => created_at + 7.days,
+                                  :paid_date => paid? ? Time.now : nil)
+    cartitems.each { |c|
+      invoice.line_items << Payday::LineItem.new(:price => c.product.final_price, 
+                                                 :quantity => c.amount, 
+                                                 :description => "##{c.product.sku}: #{c.product.name}")
     }
+    #add shipping if required
+    invoice.line_items << Payday::LineItem.new(:price => shipping_cost, 
+                                               :quantity => nil, 
+                                               :description => "Shipping")
     @pdf = invoice.render_pdf
   end
 
-  #invoice override methods
-  # def paid_at
-  #   updated_at
-  # end
+  def pdf_name
+    return @pdf_name if @pdf_name
+    @pdf_name = "invoice-#{Time.now.to_i}-#{id}.pdf"
+  end
 
-  # def due_at
-  #   nil
-  # end
-
-  # def line_items
-  #   cartitems
-  # end
 end
 
