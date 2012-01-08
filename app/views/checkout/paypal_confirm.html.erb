@@ -28,7 +28,7 @@
           <% } %>
         </ul>
         <strong>Subtotal:</strong> <span style='float:right;'><%= currency @cart.sub_total%></span><br/>
-        <strong>Delivery:</strong> <span style='float:right;'><%= currency @cart.free_shipping? ? "free" : 5%></span><br/>
+        <strong>Delivery:</strong> <span style='float:right;'><%= currency @cart.shipping_cost%></span><br/>
         <strong>Total:</strong>    <span style='float:right;'><%= currency @cart.total%></span><br/>
 
         <%=form_tag :action=>:paypal_success do |f|%>

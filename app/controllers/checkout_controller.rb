@@ -68,6 +68,7 @@ class CheckoutController < CartController
     if request.post? and @token and @payer_id
       @result =  EXPRESS_GATEWAY.purchase(cart.total_cents, {:ip => request.remote_ip, :token => @token, :payer_id => @payer_id})
       if @result.success?
+        @cart.source = :paypal
         send_emails
         mark_completed :forget => true
         render :action => "success"        

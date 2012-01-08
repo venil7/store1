@@ -7,6 +7,9 @@ class Order < ActiveRecord::Base
   scope :completed, order("updated_at").where(:completed => true)
   scope :shipped, order("updated_at").where(:shipped => true)
 
+  scope :bank_transfer, where(:source => :bank_transfer)
+  scope :paypal, where(:source => :paypal)
+
   def add_product(product_id, amount=1)
     save if !persisted?
     @cartitem = product_ids.include?(product_id) ?
