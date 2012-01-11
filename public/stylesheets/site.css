@@ -1,6 +1,6 @@
 body{color:#666;font-family:Helevetica, Arial, sans-serif;font-size:13px;line-height:1.5em;background-color:#f6f6f6;background-image:url(/images/templatemo_body1.png);background-repeat:repeat-x;margin:0;padding:0;}
-a,a:link,a:visited{color:#06C;}
-a:hover{color:#C00;text-decoration:none;}
+a,a:link,a:visited{color:#06C;text-decoration:none;}
+a:hover{color:#C00;}
 p{margin:0;padding:0 0 10px;}
 h1{font-size:40px;font-weight:700;;margin:0 0 30px;padding:5px 0;line-height:30px;}
 h2{font-size:28px;font-weight:400;line-height:28px;color:#000;margin:0 0 30px;padding:0;}
