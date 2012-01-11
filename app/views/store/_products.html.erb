@@ -20,6 +20,9 @@
        <% end %>
       </div>
       <%= link_to (content_tag :div), {:action=>:add, :id=>p.id}, {:class=>'instant_cart', :title=>'Add to Cart'} %>
+      <%if (p.badge)%>
+        <span class="badge <%= p.badge.name%>" title="<%= p.badge.description%>"><%= p.badge.name%></span>
+      <%end%>
     </div>
   </li>
 <% } %>

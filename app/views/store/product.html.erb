@@ -18,14 +18,20 @@
 		      <h1><%=@product.name%></h1>
 		      <h3>
 		        <%= content_tag :span, currency(@product.price), {:class=>:old_price} if @product.discount?%>
-            <%= content_tag :span, currency(@product.final_price), {:class=>:price}%>
+             	<%= content_tag :span, currency(@product.final_price), {:class=>:price}%>
 		      </h3>
 		      <%= form_tag :action=>:add,:id=>@product.id do %>
-             <%= select_tag :amount, options_for_select((1..50).to_a) %>
-             <%= submit_tag("add to cart", {:class=>:submit_btn}) %>
-          <% end %>
-          <br />
+              <%= select_tag :amount, options_for_select((1..50).to_a) %>
+              <%= submit_tag("add to cart", {:class=>:submit_btn}) %>
+          	  <% end %>
+          	  <br />
  		      <p><strong>Product code:</strong> <%=@product.sku%></p>
+ 		      <%if (@product.badge)%>
+	  	        <p>
+		         <span class="badge <%= @product.badge.name%>" title="<%= @product.badge.description%>"><%= @product.badge.name%></span>
+		         <span><%= @product.badge.description %></span>
+		        </p>
+		      <%end%>
 		      <p><%=@product.short_description%></p>
 		      <p><%=@product.long_description%></p>
 	      </div>

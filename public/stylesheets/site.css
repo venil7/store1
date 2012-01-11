@@ -97,6 +97,9 @@ img,#gallery a{border:none;}
 ul#product_list {padding-left:0px;}
 ul#product_list li {float:left;display:block;width:100%;list-style:none;padding:0 35px 5px 0;}
 ul#product_list li div.product {display:block;float:left;position:relative;width:610px;}
+ul#product_list li div.product span.badge {bottom: 5px;cursor: default;left: 65px;padding: 0 2px;position: absolute;}
+
+span.badge.preorder {background: salmon;color: lightyellow;}
 
 ul#product_list li div.product_name {display:block;float:left;width:460px;padding-top:5px;}
 ul#product_list li div.product_descr {display:block;float:left;width:460px;}
@@ -125,6 +128,7 @@ ul#product_list li div.product_image img {padding:4px; width:112px;height:112px;
 
 #templatemo_content .product_detail .product_description {float:left;display:block;width:300px;}
 #templatemo_content .product_detail .product_description h1 {padding: 0 0 5px 0;color:#666;font-size:24px;margin:0;line-size:30px;}
+#templatemo_content .product_detail .product_description span.badge {padding: 0 2px;cursor:default;}
 
 #templatemo_content ul#product_list li.even div.product {background:#ddd;}
 #templatemo_content ul#product_list li div.product:hover {background:#cdcdcd;}
