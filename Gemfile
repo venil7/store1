@@ -10,7 +10,7 @@ group :development, :test do
 end
 
 group :production do
-  gem 'mysql2'
+  gem 'mysql2', '0.2.6'
 end
 
 gem 'meta_where' #for advanced querying
