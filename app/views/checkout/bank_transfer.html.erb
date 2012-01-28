@@ -1,11 +1,10 @@
 <div id="templatemo_main">
 	<div id="templatemo_content">
 		<div id="bank_transfer_form">
-			<h4>Disclaimer</h4>
-			<%= render "disclaimer" %>
+
+			<%= render "bank_details", :bank_details => APP_CONFIG['bank_details'] %>
 
 			<h4>Order Details</h4>
-			
 			<% if  @bank_transfer_details.errors.any? %>
 				<ul class="validation-error">
 					<% @bank_transfer_details.errors.full_messages.each do |message| %>

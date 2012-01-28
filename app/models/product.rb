@@ -17,7 +17,7 @@ class Product < ActiveRecord::Base
   validates :long_description, :presence => true
   validates :short_description, :presence => true
 
-  default_scope order("price")
+  default_scope order("created_at DESC")
   scope :popular, order("updated_at") #requires review!!
   scope :discounted, where(:discount.gt => 0)
   scope :non_discounted, where({:discount => 0}|{:discount => nil})
@@ -53,6 +53,10 @@ class Product < ActiveRecord::Base
   #helper functions
   def discount?
     (discount != nil) && (discount > 0)
+  end
+
+  def in_stock?
+    stock > 0
   end
 
   def self.search(query)

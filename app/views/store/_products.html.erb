@@ -12,14 +12,17 @@
          <%= content_tag :span, number_to_currency(p.price, {:unit=>"€"}), {:class=>:old_price} if p.discount?%>
          <%= content_tag :span, number_to_currency(p.final_price, {:unit=>"€"}), {:class=>:price}%> <br />
          <%= content_tag :div, p.short_description %>
+         <%= render "stock", :stock => p.stock %>
       </div>
-      <div class='product_form'>
-       <%= form_tag :action=>:add, :id=>p.id do %>
-        <%= select_tag :amount, options_for_select((1..50).to_a) %>
-        <%= submit_tag 'Add' %>
-       <% end %>
-      </div>
-      <%= link_to (content_tag :div), {:action=>:add, :id=>p.id}, {:class=>'instant_cart', :title=>'Add to Cart'} %>
+      <%if (p.in_stock?)%>
+        <div class='product_form'>
+         <%= form_tag :action=>:add, :id=>p.id do %>
+          <%= select_tag :amount, options_for_select((1..50).to_a) %>
+          <%= submit_tag 'Add' %>
+         <% end %>
+        </div>
+        <%= link_to (content_tag :div), {:action=>:add, :id=>p.id}, {:class=>'instant_cart', :title=>'Add to Cart'} %>
+      <%end%>
       <%if (p.badge)%>
         <span class="badge <%= p.badge.name%>" title="<%= p.badge.description%>"><%= p.badge.name%></span>
       <%end%>

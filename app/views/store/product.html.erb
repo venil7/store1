@@ -20,12 +20,16 @@
 		        <%= content_tag :span, currency(@product.price), {:class=>:old_price} if @product.discount?%>
              	<%= content_tag :span, currency(@product.final_price), {:class=>:price}%>
 		      </h3>
-		      <%= form_tag :action=>:add,:id=>@product.id do %>
-              <%= select_tag :amount, options_for_select((1..50).to_a) %>
-              <%= submit_tag("add to cart", {:class=>:submit_btn}) %>
-          	  <% end %>
-          	  <br />
+          <%if (@product.in_stock?)%>
+            <%= form_tag :action=>:add,:id=>@product.id do %>
+                <%= select_tag :amount, options_for_select((1..50).to_a) %>
+                <%= submit_tag("add to cart", {:class=>:submit_btn}) %>
+        	  <% end %>
+            <br />
+          <% end %>  
+          	  
  		      <p><strong>Product code:</strong> <%=@product.sku%></p>
+          <p><%= render "stock", :stock => @product.stock %></p>
  		      <%if (@product.badge)%>
 	  	        <p>
 		         <span class="badge <%= @product.badge.name%>" title="<%= @product.badge.description%>"><%= @product.badge.name%></span>
