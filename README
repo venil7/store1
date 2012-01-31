@@ -25,6 +25,11 @@ development:
     invoice_logo: /path/to/logo.png
     company_name: my awesome company
     company_details: some details go here
+  bank_details:
+    name: name
+    sort_code: xx-xx-xx
+    account_number: xxxxxxxxxxxxxxx
+    iban: ABC DEF 12345678
 
 ==database.yml
 

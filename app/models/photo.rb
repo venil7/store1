@@ -1,5 +1,5 @@
 class Photo < ActiveRecord::Base
-  has_attached_file :photo, :styles => { :big => "200x200>",:small => "112x112>",:thumb => "40x40>" },
+  has_attached_file :photo, :styles => { :large => "400x400>", :big => "200x200>",:small => "112x112>",:thumb => "40x40>" },
                   :url  => "/assets/products/:id/:style/:basename.:extension",
                   :path => ":rails_root/public/assets/products/:id/:style/:basename.:extension"
   validates :product_id, :presence => true, :numericality => true

@@ -3,11 +3,11 @@ $(function() {
   $('#templatemo_menu a,.sidebar_title').corner('5px');
   $('.darkruby').corner('3px');
 
-  //slides
-  $("#templatemo_banner").slides({
-    play: 4000,
-    generateNextPrev:true,
-    generatePagination:false
+  //fancy box
+  $("a.fancy").fancybox();
+  $("a.not_fancy").click(function(){
+    $("a.fancy").first().click();
+    return false;
   });
 
   //instant cart

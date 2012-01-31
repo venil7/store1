@@ -4,11 +4,11 @@
 
       <div class='product_detail'>
 	      <div class='product_detail_images'>
-		      <%=image_tag @product.photo.url(:big) %>
+		      <%=link_to(image_tag(@product.photo.url(:big)), @product.photo.url(:large), {:class=>:not_fancy}) %>
 		      <div class='thumbnails'>
 			      <ul>
 				      <% @product.photos.each {|p| %>
-				        <%= content_tag :li, image_tag(p.photo.url(:thumb))%>
+				        <%= content_tag(:li, link_to(image_tag(p.photo.url(:thumb)), p.photo.url(:large), {:class=>:fancy, :title=>p.description, :rel=>:photo_group})) %>
 				      <% } %>
 			      </ul>
 		      </div>
