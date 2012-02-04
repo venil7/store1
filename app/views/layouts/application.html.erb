@@ -35,7 +35,9 @@
 
 <div id="templatemo_footer">
 
-    Copyright © 2012 <a href="#">SasisCo</a> |
+    Copyright © <%= Time.new.year %> SasisCo |
+    <%= link_to "Shipping", {:controller=>:contact,:action => :shipping }%> |
+    <%= link_to "Terms & Conditions", {:controller=>:contact,:action => :terms }%> |
     Web Development by
     <a href='http://www.darkruby.co.uk'>
       <span class='darkruby' style='background:#111;color:grey;text-decoration:none;'>&lt;%<span style='color:#fff'>Dark</span><span style='color:red;'>Ruby</span>%&gt;</span>

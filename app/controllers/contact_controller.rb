@@ -1,4 +1,5 @@
 class ContactController < ApplicationController
+  
   def index
     @menu_item = :contact
     if request.post?
@@ -15,5 +16,11 @@ class ContactController < ApplicationController
     end
   end
 
-end
+  def shipping
+    @menu_item = :contact
+  end
 
+  def terms
+    @menu_item = :contact
+  end
+end

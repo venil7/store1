@@ -2,29 +2,27 @@
 	<div id="templatemo_content">
       <%= render 'shared/error_list', :item => @message %>
       <div id="contact_form">
+          <h4>Quick Contact</h4>
+          <p><%=flash[:notice]%></p>
+          <%= form_for @message, :as => :message, :url => {:action=>:index} do |form| %>
+            <div class="cleaner_h10"></div>
+              <%= form.label :name, "Name" %>
+              <%= form.text_field :name, {:class=>:input_field} %>
+            <div class="cleaner_h10"></div>
+              <%= form.label :email, "Email" %>
+              <%= form.text_field :email, {:class=>:input_field} %>
+            <div class="cleaner_h10"></div>
+              <%= form.label :message, "Message" %>
+              <%= form.text_area :message, {:class=>:input_field} %>
+            <div class="cleaner_h10"></div>
+              <%= form.submit "Send", {:class=>:submit_btn} %>
+              <%= form.submit "Reset", {:class=>:submit_btn,:type=>:reset} %>
+          <%end%>
+      </div>
+  </div>
 
-                    <h4>Quick Contact</h4>
-                    <p><%=flash[:notice]%></p>
-                    <%= form_for @message, :as => :message, :url => {:action=>:index} do |form| %>
-                      <div class="cleaner_h10"></div>
-                        <%= form.label :name, "Name" %>
-                        <%= form.text_field :name, {:class=>:input_field} %>
-                      <div class="cleaner_h10"></div>
-                        <%= form.label :email, "Email" %>
-                        <%= form.text_field :email, {:class=>:input_field} %>
-                      <div class="cleaner_h10"></div>
-                        <%= form.label :message, "Message" %>
-                        <%= form.text_area :message, {:class=>:input_field} %>
-                      <div class="cleaner_h10"></div>
-                        <%= form.submit "Send", {:class=>:submit_btn} %>
-                        <%= form.submit "Reset", {:class=>:submit_btn,:type=>:reset} %>
-                    <%end%>
-            </div>
-  	</div>
-
-    <div id="templatemo_sidebar">
-        <div class="sidebar_box"></div>
-    </div>
-    <div class="cleaner"></div>
+  <div id="templatemo_sidebar">
+     <div class="sidebar_box"></div>
+  </div>
+  <div class="cleaner"></div>
 </div>
-
